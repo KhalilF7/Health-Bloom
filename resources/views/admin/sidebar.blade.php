@@ -29,5 +29,21 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add User</a></li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Specialist Management</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Specialists </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('add_specialist_view')}}"> Add Specialist </a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>
