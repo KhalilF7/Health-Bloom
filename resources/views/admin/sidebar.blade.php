@@ -29,5 +29,28 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add User</a></li>
               </ul>
             </div>
+</li>
+ <li class="nav-item menu-items">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Center Management</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('center')}}">Centers</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/center">Add Center</a></li>
+              </ul>
+            </div>
+              <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('categorycenter')}}">Center Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="admin/pages/ui-features/dropdowns.html">Add Category</a></li>
+              </ul>
+            </div>
+</li>
+
         </ul>
       </nav>

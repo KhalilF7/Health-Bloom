@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CenterController;
+use App\Http\Controllers\CategorycenterController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +24,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,3 +34,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/categorycenter',[CategorycenterController::class, "index"]);
+Route::get('/center', [CenterController::class,"index"]);
