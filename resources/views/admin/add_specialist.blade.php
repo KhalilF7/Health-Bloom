@@ -52,7 +52,7 @@
                       <div class="form-group">
                         <label for="speciality">Speciality</label>
                         <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='speciality' required="">
-                        <option>--Select Speciality-- </option>
+                        <option disabled>--Select Speciality-- </option>
                         <option value="Paramedic">Paramedic</option>
                         <option value="Nutritionist">Nutritionist</option>
                         <option value="Physiotherapist">Physiotherapist</option>

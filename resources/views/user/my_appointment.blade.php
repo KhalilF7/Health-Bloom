@@ -162,6 +162,7 @@
         </div> <!-- .container -->
     </div> <!-- .page-section -->
 
+    @include('user.appointment')
  
 
 <footer class="page-footer">

@@ -54,12 +54,12 @@ class SpecialistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showview()
     {
-        //
+        $specialists = Specialist::all();
+        return view('admin.show_specialist', compact('specialists'));
     }
 
     /**
@@ -68,7 +68,7 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editspecialist($id)
     {
         //
     }
@@ -91,8 +91,10 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deletespecialist($id)
     {
-        //
+        $specialist = Specialist::find($id);
+        $specialist->delete();
+        return redirect()->back();
     }
 }

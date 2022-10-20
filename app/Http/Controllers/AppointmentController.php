@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Specialist;
 use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
@@ -32,7 +33,8 @@ class AppointmentController extends Controller
         {
             $userid = Auth::user()->id;
             $appoints = Appointment::where('user_id', $userid)->get();
-            return view('user.my_appointment', compact('appoints'));
+            $specialists = Specialist::all();
+            return view('user.my_appointment', compact('appoints', 'specialists'));
         }
         else 
         {
@@ -44,6 +46,28 @@ class AppointmentController extends Controller
     {
         $data = Appointment::find($id);
         $data->delete();
+        return redirect()->back();
+    }
+
+    public function showappointment()
+    {
+        $data = Appointment::all();
+        return view('admin.showappointment', compact('data'));
+    }
+
+    public function approved($id)
+    {
+        $data = Appointment::find($id);
+        $data->status = 'Approved';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function canceled($id)
+    {
+        $data = Appointment::find($id);
+        $data->status = 'Canceled';
+        $data->save();
         return redirect()->back();
     }
 }
