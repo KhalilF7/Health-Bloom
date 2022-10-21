@@ -59,7 +59,13 @@
                              @foreach($categoriescenter as $item)
                           <tr>
                             <td>{{ $item->categoryName }}</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
+                             <td>
+                                <a  title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+
+                                    <form method="POST" accept-charset="UTF-8" style="display:inline">
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm("Confirm delete?")"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                    </form>
+                            </td> 
                           </tr>
                            @endforeach
                         </tbody>

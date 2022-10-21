@@ -55,7 +55,8 @@
                             <th>Description</th>
                             <th>Address</th>
                             <th>Email</th>
-                             <th>Mobile</th>
+                            <th>Mobile</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -65,9 +66,15 @@
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->address }}</td>
                             <td>{{ $item->email }}</td>
-                             <td>{{$item->phone }}</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
-                          </tr>
+                            <td>{{$item->phone }}</td>
+                            <td>
+                                <a  title="View Center"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                <a href="{{ url('/center/' . $item->id . '/edit') }}" title="Edit Center"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                    <form method="POST" accept-charset="UTF-8" style="display:inline">
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Center" onclick="return confirm("Confirm delete?")"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                    </form>
+                            </td>                      
+                            </tr>
                            @endforeach
                         </tbody>
                       </table>

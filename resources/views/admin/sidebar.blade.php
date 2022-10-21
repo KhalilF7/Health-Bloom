@@ -41,13 +41,11 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('center')}}">Centers</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ url('/center') }}">Add Center</a></li>
-              </ul>
+            </ul>
             </div>
               <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('categorycenter')}}">Center Categories</a></li>
-                <li class="nav-item"> <a class="nav-link" href="admin/pages/ui-features/dropdowns.html">Add Category</a></li>
               </ul>
             </div>
 </li>

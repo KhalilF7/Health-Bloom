@@ -51,7 +51,8 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-        //
+         $center = Center::find($id);
+        return view('center.showcenter')->with('centers', $center);
     }
 
     /**
@@ -62,7 +63,9 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $center = Center::find($id);
+        return view('admin.center.editcenter')->with('centers', $center);
+    
     }
 
     /**
@@ -74,7 +77,10 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $center = Center::find($id);
+        $input = $request->all();
+        $center->update($input);
+        return redirect('center')->with('flash_message', 'center Updated!');
     }
 
     /**
@@ -85,6 +91,7 @@ class CenterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Center::destroy($id);
+        return redirect('center')->with('flash_message', 'Center deleted!'); 
     }
 }
