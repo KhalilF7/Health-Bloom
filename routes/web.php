@@ -5,6 +5,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceUserController;
 
+use App\Http\Controllers\CenterController;
+use App\Http\Controllers\CategorycenterController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +39,7 @@ Route::resource('/serviceAdmin', ServiceController::class);
 
 // Route::get('/serviceAdmin/create', [ServiceController::class,'create']);
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -44,3 +49,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('/categorycenter',CategorycenterController::class);
+Route::resource('/center',CenterController::class);
