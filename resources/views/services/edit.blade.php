@@ -23,7 +23,11 @@
         <label>Price</label></br>
         <input type="number" name="price" id="price" value="{{$services->price}}" class="form-control"></br>
         
-        <input type="submit" value="Update" class="btn btn-success"></br>
+        <input type="submit" value="Update" class="btn btn-success">
+        <a href="{{ url('/serviceAdmin') }}" class="btn btn-primary" title="Back">
+    <i class="fa fa-plus" aria-hidden="true"></i> Back
+  </a>
+  </br>
     </form>
   
   </div>

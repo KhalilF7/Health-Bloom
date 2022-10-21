@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
 
-// Route::resource('/service', ServiceController::class);
+Route::resource('/service', ServiceUserController::class);
+
+Route::get('/service/approve/{id}', [ServiceUserController::class,'approve']);
 
 Route::resource('/serviceAdmin', ServiceController::class);
 

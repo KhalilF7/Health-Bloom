@@ -1,4 +1,4 @@
-@extends('services.layout')
+@extends('services.layoutAdmin')
 @section('content')
 <div class="card">
   <div class="card-header">Services Page</div>
@@ -11,7 +11,9 @@
         <p class="card-text">Price : {{ $services->price }}</p>
         <p class="card-text">Status : {{ $services->status }}</p>
   </div>
-      
+  <a href="{{ url('/serviceAdmin') }}" class="btn btn-success btn-sm" title="Back">
+    <i class="fa fa-plus" aria-hidden="true"></i> Back
+  </a>
     </hr>
   </div>
 </div>

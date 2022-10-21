@@ -24,13 +24,22 @@
                 <td>{{ $item->price }}</td>
                 <td class="tag-cloud-link">{{ $item->status }}</td>
                 <td>
-                                            <a href="{{ url('/service/' . $item->id) }}" title="View Service"><button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/service/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/service' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger" title="Delete Service" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
+                                            <!-- <a href="{{ url('/service/' . $item->id) }}" title="View Service"><button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
+                                            @if($item->status=="unrealized")
+                                            <a href="{{ url('/service/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Negociate</button></a>
+                                            <button type="submit" class="btn btn-success" title="Approve Service" onclick="return confirm(&quot;Confirm approve?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/service/approve', $item->id)}}">Approve</a>
+                                            </button>
+                                            @else
+                                            <button type="submit" class="btn btn-success" title="Approve Service" onclick="return confirm(&quot;Confirm approve?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/service/like', $item->id)}}">Like</a>
+                                            </button>
+                                            <button type="submit" class="btn btn-success" title="Approve Service" onclick="return confirm(&quot;Confirm approve?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/service/dislike', $item->id)}}">Dislike</a>
+                                            </button>
+
+                                            @endif
+
                                         </td>
 
                 @endforeach

@@ -13,12 +13,6 @@ class ServiceController extends Controller
         return view ('services.indexAdmin')->with('services', $services);
     }
 
-    public function indexUser()
-    {
-        $services = Service::all();
-        return view ('services.index')->with('services', $services);
-    }
-
     public function create()
     {
         return view('services.create');

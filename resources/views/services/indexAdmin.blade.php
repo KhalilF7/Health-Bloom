@@ -38,7 +38,7 @@
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
-                                            <a href="{{ url('/serviceAdmin/' . $item->id) }}" title="View Service"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/serviceAdmin/' . $item->id) }}" title="View Service"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Show</button></a>
                                             <a href="{{ url('/serviceAdmin/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             <form method="POST" action="{{ url('/serviceAdmin' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
