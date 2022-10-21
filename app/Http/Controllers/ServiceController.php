@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service; 
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -20,8 +21,14 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
-        Service::create($input);
+        $data = new Service;
+        $data->name = $request->name;
+        $data->date = $request->date;
+        $data->time = $request->time;
+        $data->duration = $request->duration;
+        $data->price = $request->price;
+        $data->user_id = Auth::user()->id;
+        $data->save();
         return redirect('serviceAdmin')->with('flash_message', 'Service Addedd!'); 
     }
 

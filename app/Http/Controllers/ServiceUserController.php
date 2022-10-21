@@ -32,7 +32,7 @@ class ServiceUserController extends Controller
     public function like($id)
     {
         $service = Service::find($id);
-        $service->status = 'like';
+        $service->like += 1;
         $service->save();
         return redirect()->back();
     }
@@ -40,7 +40,7 @@ class ServiceUserController extends Controller
     public function dislike($id)
     {
         $service = Service::find($id);
-        $service->status = 'dislike';
+        $service->dislike += 1;
         $service->save();
         return redirect()->back();
     }

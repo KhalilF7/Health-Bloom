@@ -20,8 +20,14 @@ class CreateServicesTable extends Migration
             $table->string("time");
             $table->string("duration");
             $table->string("price");
+            $table->integer("like")->default(0);
+            $table->integer("dislike")->default(0);
             $table->string("status")->default("unrealized");
-
+            $table->foreignId("user_id")
+                  ->references("id")
+                  ->on("users")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
             $table->timestamps();
         });
     }
