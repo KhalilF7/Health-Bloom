@@ -61,7 +61,8 @@ class CategorycenterController extends Controller
      */
     public function edit($id)
     {
-        //
+         $category = Categorycenter::find($id);
+        return view('admin.center.editcategory')->with('categories', $category);
     }
 
     /**
@@ -73,7 +74,10 @@ class CategorycenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Categorycenter::find($id);
+        $input = $request->all();
+        $category->update($input);
+        return redirect('categorycenter')->with('flash_message', 'category Updated!');
     }
 
     /**
@@ -84,6 +88,7 @@ class CategorycenterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categorycenter::destroy($id);
+        return redirect('categorycenter')->with('flash_message', 'category deleted!'); 
     }
 }
