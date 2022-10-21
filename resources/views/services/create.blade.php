@@ -1,10 +1,10 @@
-@extends('services.layout')
+@extends('services.layoutAdmin')
 @section('content')
 <div class="card">
-  <div class="card-header">Service Page</div>
+  <div class="card-header">Service create</div>
   <div class="card-body">
       
-      <form action="{{ url('service') }}" method="post">
+      <form action="{{ url('serviceAdmin') }}" method="POST">
         {!! csrf_field() !!}
         <label>Name</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
@@ -26,4 +26,4 @@
   
   </div>
 </div>
-@stop
+@endsection

@@ -20,7 +20,11 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
 
-Route::resource('/service', ServiceController::class);
+// Route::resource('/service', ServiceController::class);
+
+Route::resource('/serviceAdmin', ServiceController::class);
+
+// Route::get('/serviceAdmin/create', [ServiceController::class,'create']);
 
 Route::middleware([
     'auth:sanctum',

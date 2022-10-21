@@ -10,6 +10,12 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::all();
+        return view ('services.indexAdmin')->with('services', $services);
+    }
+
+    public function indexUser()
+    {
+        $services = Service::all();
         return view ('services.index')->with('services', $services);
     }
 
@@ -22,7 +28,7 @@ class ServiceController extends Controller
     {
         $input = $request->all();
         Service::create($input);
-        return redirect('service')->with('flash_message', 'Service Addedd!'); 
+        return redirect('serviceAdmin')->with('flash_message', 'Service Addedd!'); 
     }
 
     public function show($id)
@@ -43,12 +49,12 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $input = $request->all();
         $service->update($input);
-        return redirect('service')->with('flash_message', 'service Updated!');
+        return redirect('serviceAdmin')->with('flash_message', 'service Updated!');
     }
 
     public function destroy($id)
     {
         Service::destroy($id);
-        return redirect('service')->with('flash_message', 'Service deleted!'); 
+        return redirect('serviceAdmin')->with('flash_message', 'Service deleted!'); 
     }
 }

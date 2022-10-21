@@ -16,6 +16,14 @@
             </a>
           </li>
           <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('serviceAdmin')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Services</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
