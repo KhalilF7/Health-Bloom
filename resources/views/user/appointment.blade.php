@@ -22,7 +22,7 @@
             
             @foreach($specialists as $specialist)
 
-              <option value="{{$specialist->name}}">{{$specialist->name}} : {{$specialist->speciality}}</option>
+              <option value="{{$specialist->id}}">{{$specialist->name}} : {{$specialist->speciality}}</option>
 
             @endforeach
 

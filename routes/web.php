@@ -42,6 +42,7 @@ Route::get('/deletespecialist/{id}', [SpecialistController::class, 'deletespecia
 
 Route::get('/editspecialist/{id}', [SpecialistController::class, 'editspecialist']);
 
+Route::post('/updatespecialist/{id}', [SpecialistController::class, 'updatespecialist']);
 
 Route::post('/appointment', [AppointmentController::class, 'appointment']);
 
@@ -54,3 +55,7 @@ Route::get('/showappointment', [AppointmentController::class, 'showappointment']
 Route::get('/approved/{id}', [AppointmentController::class, 'approved']);
 
 Route::get('/canceled/{id}', [AppointmentController::class, 'canceled']);
+
+Route::get('/emailview/{id}', [AppointmentController::class, 'emailview']);
+
+Route::post('/sendemail/{id}', [AppointmentController::class, 'sendemail']);

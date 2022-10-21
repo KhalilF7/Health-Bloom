@@ -15,6 +15,14 @@
         @include('admin.navbar')
         <!-- partial -->
         <div class="main-panel">
+          
+          @if(session()->has('message'))
+          <div class="alert alert-success">
+            <button type="button" class="close" data-bs-dismiss="alert">X</button>
+            {{session()->get('message')}}
+          </div>
+          @endif
+          
             <div class="content-wrapper">
                 <div class="page-header">
                     <h3 class="page-title">All Specialists</h3>

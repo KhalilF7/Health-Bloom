@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Specialist;
+use Notification;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
@@ -17,7 +19,7 @@ class AppointmentController extends Controller
         $data->date = $request->date;
         $data->phone = $request->phone;
         $data->message = $request->message;
-        $data->specialist = $request->specialist;
+        $data->specialist_id = $request->specialist;
         $data->status = 'In Progress';
         if(Auth::id())
         {
@@ -69,5 +71,25 @@ class AppointmentController extends Controller
         $data->status = 'Canceled';
         $data->save();
         return redirect()->back();
+    }
+
+    public function emailview($id)
+    {
+        $data = Appointment::find($id);
+        return view('admin.email_view', compact('data'));
+    }
+
+    public function sendemail(Request $request, $id)
+    {
+        $data = Appointment::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'message' => $request->message,
+            'actiontext' => $request->actiontext,
+            'actionurl' => $request->actionurl,
+            'endpart' => $request->endpart,
+        ];
+        Notification::send($data, new SendEmailNotification($details));
+        return redirect('/showappointment');
     }
 }

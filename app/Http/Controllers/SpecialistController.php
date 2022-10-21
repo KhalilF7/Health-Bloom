@@ -48,7 +48,7 @@ class SpecialistController extends Controller
 
         $specialist->save();
 
-        return redirect()->back()->with('message', 'Specialist Added Seccessfully !');
+        return redirect('/show_specialist_view')->with('message', 'Specialist Added Seccessfully !');
     }
 
     /**
@@ -70,7 +70,8 @@ class SpecialistController extends Controller
      */
     public function editspecialist($id)
     {
-        //
+        $specialist = Specialist::find($id);
+        return view('admin.edit_specialist', compact('specialist'));
     }
 
     /**
@@ -80,9 +81,24 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatespecialist(Request $request, $id)
     {
-        //
+        $specialist = Specialist::find($id);
+        $specialist->name = $request->specialistname;
+        $specialist->phone = $request->phonenumber;
+        $specialist->speciality = $request->speciality;
+
+        $image = $request->file;
+        if($image)
+        {
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->file->move('specialistimage', $imagename);
+            $specialist->image = $imagename;
+        }
+
+        $specialist->save();
+
+        return redirect('/show_specialist_view')->with('message', 'Specialist Edited Seccessfully !');
     }
 
     /**

@@ -149,7 +149,7 @@
                 @foreach($appoints as $appoint)
 
                 <tr style="padding: 6px 12px; background-color: #E1EBE8; color: #6E807A; border-radius: 4px;">
-                    <td>{{$appoint->specialist}}</td>
+                    <td>{{$appoint->specialist->name}}</td>
                     <td>{{$appoint->date}}</td>
                     <td>{{$appoint->message}}</td>
                     <td class="tag-cloud-link">{{$appoint->status}}</td>
