@@ -38,5 +38,5 @@
             </table>
         </div> <!-- .container -->
     </div>
-  
+  @endsection
 
