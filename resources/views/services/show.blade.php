@@ -15,3 +15,4 @@
     </hr>
   </div>
 </div>
+@endsection

@@ -1,7 +1,6 @@
 @extends('services.layout')
 @section('content')
 <div class="card">
-  <div class="card-header">Contactus Page</div>
   <div class="card-body">
       
       <form action="{{ url('service/' .$services->id) }}" method="post">
@@ -29,4 +28,4 @@
   
   </div>
 </div>
-@stop
+@endsection
