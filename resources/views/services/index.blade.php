@@ -3,6 +3,7 @@
     @section('content')
     <div class="page-section">
         <div class="container">
+            @if(count($services) !==0)
             <table class="text-center wow fadeInUp" align="center" width="90%">
                 <tr style="padding: 6px 12px; background-color: #00D9A5; color: #fff; border-radius: 4px;">
                     <th style="padding: 10px; font-size: 20px;">Name</th>
@@ -43,6 +44,9 @@
                 @endforeach
 
             </table>
+            @else
+            <h2> Nothing to show</h2>
+            @endif
         </div> <!-- .container -->
     </div>
   @endsection
