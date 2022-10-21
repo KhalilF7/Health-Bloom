@@ -19,8 +19,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
+                                        <th>Description</th>
                                         <th>Duration</th>
                                         <th>Price</th>
                                         <th>Status</th>
@@ -32,19 +31,28 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->date }}</td>
-                                        <td>{{ $item->time }}</td>
+                                        <td>{{ $item->description }}</td>
                                         <td>{{ $item->duration }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
-                                            <a href="{{ url('/serviceAdmin/' . $item->id) }}" title="View Service"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Show</button></a>
-                                            <a href="{{ url('/serviceAdmin/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        @if($item->status=="Active")
+                                            <a href="{{ url('/serviceAdmin/' . $item->id) }}" title="View Service"><button class="btn btn-info "><i class="fa fa-eye" aria-hidden="true"></i> Show</button></a>
+                                            <a href="{{ url('/serviceAdmin/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <button type="submit" class="btn btn-success" title="Archive Service" onclick="return confirm(&quot;Confirm archive service?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/serviceAdmin/archive', $item->id)}}">Archive</a>
+                                            </button>
                                             <form method="POST" action="{{ url('/serviceAdmin' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Service" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger " title="Delete Service" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
+                                        @else
+                                        <button type="submit" class="btn btn-success" title="Active Service" onclick="return confirm(&quot;Confirm archive service?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/serviceAdmin/active', $item->id)}}">Active</a>
+                                            </button>
+                                            @endif
+
                                         </td>
                                     </tr>
                                 @endforeach

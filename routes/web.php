@@ -23,7 +23,13 @@ Route::get('/home', [HomeController::class, 'redirect']);
 
 Route::resource('/service', ServiceUserController::class);
 
-Route::get('/service/approve/{id}', [ServiceUserController::class,'approve']);
+Route::get('/serviceAdmin/archive/{id}', [ServiceController::class,'archive']);
+
+Route::get('/serviceAdmin/active/{id}', [ServiceController::class,'active']);
+
+Route::get('/service/like/{id}', [ServiceUserController::class,'like']);
+
+Route::get('/service/dislike/{id}', [ServiceUserController::class,'dislike']);
 
 Route::resource('/serviceAdmin', ServiceController::class);
 

@@ -21,14 +21,6 @@ class ServiceUserController extends Controller
     }
 
 
-    public function approve($id)
-    {
-        $service = Service::find($id);
-        $service->status = 'inprogress';
-        $service->save();
-        return redirect()->back();
-    }
-
     public function like($id)
     {
         $service = Service::find($id);

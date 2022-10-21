@@ -16,13 +16,12 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->date("date");
-            $table->string("time");
+            $table->string("description");
             $table->string("duration");
             $table->string("price");
             $table->integer("like")->default(0);
             $table->integer("dislike")->default(0);
-            $table->string("status")->default("unrealized");
+            $table->string("status")->default("Active");
             $table->foreignId("user_id")
                   ->references("id")
                   ->on("users")

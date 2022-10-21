@@ -11,14 +11,17 @@
         <label>Name</label></br>
         <input type="text" name="name" id="name" value="{{$services->name}}" class="form-control"></br>
         
-        <label>Date</label></br>
-        <input type="date" name="date" id="date" value="{{$services->date}}" class="form-control"></br>
+        <label>Description</label></br>
+        <input type="text" name="description" id="description" value="{{$services->description}}" class="form-control"></br>
         
-        <label>Time</label></br>
-        <input type="text" name="time" id="time" value="{{$services->time}}" class="form-control"></br>
-        
-        <label>Duration</label></br>
-        <input type="text" name="duration" id="duration" value="{{$services->duration}}" class="form-control"></br>
+        <label for="duration">Duration</label>
+                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" id='duration' value="{{$services->duration}}" name='duration' required="required">
+                        <option value="30min">30 min</option>
+                        <option value="1h">1h</option>
+                        <option value="2h">2h</option>
+                        <option value="3h">3h</option>
+                        <option value="4h">4h</option>
+                      </select>
         
         <label>Price</label></br>
         <input type="number" name="price" id="price" value="{{$services->price}}" class="form-control"></br>

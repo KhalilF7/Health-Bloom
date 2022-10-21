@@ -23,8 +23,7 @@ class ServiceController extends Controller
     {
         $data = new Service;
         $data->name = $request->name;
-        $data->date = $request->date;
-        $data->time = $request->time;
+        $data->description = $request->description;
         $data->duration = $request->duration;
         $data->price = $request->price;
         $data->user_id = Auth::user()->id;
@@ -57,5 +56,20 @@ class ServiceController extends Controller
     {
         Service::destroy($id);
         return redirect('serviceAdmin')->with('flash_message', 'Service deleted!'); 
+    }
+
+    public function archive($id)
+    {
+        $service = Service::find($id);
+        $service->status = 'Inactive';
+        $service->save();
+        return redirect()->back();
+    }
+    public function active($id)
+    {
+        $service = Service::find($id);
+        $service->status = 'Active';
+        $service->save();
+        return redirect()->back();
     }
 }
