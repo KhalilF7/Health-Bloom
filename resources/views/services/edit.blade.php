@@ -1,9 +1,9 @@
-@extends('services.layout')
+@extends('services.layoutAdmin')
 @section('content')
 <div class="card">
   <div class="card-body">
       
-      <form action="{{ url('service/' .$services->id) }}" method="post">
+      <form action="{{ url('serviceAdmin/' .$services->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
         <input type="hidden" name="id" id="id" value="{{$services->id}}" id="id" />
