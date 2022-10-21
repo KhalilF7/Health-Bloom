@@ -26,9 +26,10 @@ class CenterController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.center.createCenter');
     }
 
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -37,7 +38,9 @@ class CenterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $input = $request->all();
+        Center::create($input);
+        return redirect('center')->with('flash_message', 'Center Addedd!'); 
     }
 
     /**

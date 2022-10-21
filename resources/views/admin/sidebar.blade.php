@@ -41,7 +41,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('center')}}">Centers</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/center">Add Center</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/center') }}">Add Center</a></li>
               </ul>
             </div>
               <div class="collapse" id="ui-basic">

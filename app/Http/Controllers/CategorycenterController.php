@@ -25,7 +25,8 @@ class CategorycenterController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.center.createCategory');
+
     }
 
     /**
@@ -36,7 +37,9 @@ class CategorycenterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $input = $request->all();
+        Categorycenter::create($input);
+        return redirect('categorycenter')->with('flash_message', 'Category Addedd!'); 
     }
 
     /**

@@ -43,7 +43,9 @@
         <div class=" grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Centers List</h4>
+                    <h4 class="card-title">Categories List</h4>
+                     <a href="{{ url('/categorycenter/create') }}" type="button" class="btn btn-primary btn-fw">Ajouter une nouvelle catégorie</a>
+
                     </p>
                     <div class="table-responsive">
                       <table class="table">

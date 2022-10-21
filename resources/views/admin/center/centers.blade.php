@@ -44,6 +44,8 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Centers List</h4>
+                    <a href="{{ url('/center/create') }}" type="button" class="btn btn-primary btn-fw">Ajouter un nouveau centre</a>
+
                     </p>
                     <div class="table-responsive">
                       <table class="table">

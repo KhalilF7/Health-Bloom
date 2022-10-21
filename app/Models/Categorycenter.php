@@ -10,6 +10,6 @@ class Categorycenter extends Model
     use HasFactory;
     protected $table = 'categories_center';
     protected $primaryKey = 'id';
-    protected $fillable = ['name'];
+    protected $fillable = ['categoryName'];
     
 }

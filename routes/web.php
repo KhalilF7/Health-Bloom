@@ -35,5 +35,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/categorycenter',[CategorycenterController::class, "index"]);
-Route::get('/center', [CenterController::class,"index"]);
+Route::resource('/categorycenter',CategorycenterController::class);
+Route::resource('/center',CenterController::class);
