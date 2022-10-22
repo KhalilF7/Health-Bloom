@@ -20,6 +20,16 @@ class CreateCentersTable extends Migration
             $table->string("address");
             $table->string("email");
             $table->string("phone");
+            $table->foreignId("user_id")
+                  ->references("id")
+                  ->on("users")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
+            $table->foreignId("categorycenter_id")
+                  ->references("id")
+                  ->on("categories_center")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
             $table->timestamps();
         });
     }

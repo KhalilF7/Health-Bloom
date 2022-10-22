@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CategorycenterController;
+use App\Http\Controllers\CenterUserController;
+
 
 
 
@@ -37,3 +39,6 @@ Route::middleware([
 
 Route::resource('/categorycenter',CategorycenterController::class);
 Route::resource('/center',CenterController::class);
+Route::resource('/centerUser',CenterUserController::class);
+
+

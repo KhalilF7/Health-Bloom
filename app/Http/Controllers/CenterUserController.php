@@ -4,15 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Center;
-use App\Models\Categorycenter;
-use Illuminate\Support\Facades\Auth;
 
 
-
-class CenterController extends Controller
+class CenterUserController extends Controller
 {
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +16,7 @@ class CenterController extends Controller
     public function index()
     {
         $centers = Center::all();
-        return view ('admin.center.centers')->with('centers', $centers);
+        return view ('admin.center.centersUsers')->with('centers', $centers);
     }
 
     /**
@@ -31,28 +26,18 @@ class CenterController extends Controller
      */
     public function create()
     {
-        return view ('admin.center.createCenter');
+        //
     }
 
-   
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request)
+    public function store(Request $request)
     {
-        $data = new Center;
-        $data->name = $request->name;
-        $data->description = $request->description;
-        $data->address = $request->address;
-        $data->email = $request->email;
-        $data->phone = $request->phone;
-        $data->categorycenter_id=$request->categorycenter_id;
-        $data->user_id = Auth::user()->id;
-        $data->save();
-        return redirect('center')->with('flash_message', 'Center Addedd!'); 
+        //
     }
 
     /**
@@ -63,8 +48,7 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-         $center = Center::find($id);
-        return view('center.showcenter')->with('centers', $center);
+        //
     }
 
     /**
@@ -75,9 +59,7 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        $center = Center::find($id);
-        return view('admin.center.editcenter')->with('centers', $center);
-    
+        //
     }
 
     /**
@@ -89,10 +71,7 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $center = Center::find($id);
-        $input = $request->all();
-        $center->update($input);
-        return redirect('center')->with('flash_message', 'center Updated!');
+        //
     }
 
     /**
@@ -103,7 +82,6 @@ class CenterController extends Controller
      */
     public function destroy($id)
     {
-        Center::destroy($id);
-        return redirect('center')->with('flash_message', 'Center deleted!'); 
+        //
     }
 }

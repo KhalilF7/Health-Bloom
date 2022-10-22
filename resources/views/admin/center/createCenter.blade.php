@@ -83,17 +83,16 @@
                         <label for="phonenumber">Phone Number</label>
                         <input type="number" class="form-control" style="color:#0090e7" name="phone" placeholder="Phone Number" required="">
                       </div>
-                      <!-- <div class="form-group">
-                        <label for="speciality">Speciality</label>
-                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='speciality' required="">
+                      <div class="form-group">
+                        <label for="category">Category</label>
+
+                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='category' required="">
                         <option disabled>--Select Speciality-- </option>
-                        <option value="Paramedic">Paramedic</option>
-                        <option value="Nutritionist">Nutritionist</option>
-                        <option value="Physiotherapist">Physiotherapist</option>
-                        <option value="Advisor">Advisor</option>
-                        <option value="Fitness Trainer">Fitness Trainer</option>
+                        <option value="Paramedic"></option>
+                       
                       </select>
-                      </div> -->
+                        
+                      </div>
                       
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
