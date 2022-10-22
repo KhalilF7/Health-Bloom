@@ -27,6 +27,11 @@ class CreateServicesTable extends Migration
                   ->on("users")
                   ->onDelete("cascade")
                   ->onUpdate("cascade");
+            $table->foreignId("center_id")
+                        ->references("id")
+                        ->on("centers")
+                        ->onDelete("cascade")
+                        ->onUpdate("cascade");
             $table->timestamps();
         });
     }

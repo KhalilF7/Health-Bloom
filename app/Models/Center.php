@@ -13,5 +13,10 @@ class Center extends Model
     protected $table = 'centers';
     protected $primaryKey = 'id';
     protected $fillable = ['name','description','address','email','phone'];
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
     
 }
