@@ -8,11 +8,19 @@
                         <h2>Service List</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/serviceAdmin/create') }}" class="btn btn-success btn-sm" title="Add New Service">
+                        @if(count($services)!=0)
+                        <a href="{{ url('/center/serviceAdmin/' . $services->first()->center_id. '/create') }}" class="btn btn-success btn-sm" title="Add New Service">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
                         <br/>
+                        @else
+                        <a href="{{ url('/center/serviceAdmin/' . $id. '/create') }}" class="btn btn-success btn-sm" title="Add New Service">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </a>
+                        <br/>
+                        <br/>
+                        @endif
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

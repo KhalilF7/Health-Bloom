@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $services = Service::all();
+        $services = Service::where('center_id', $id)->get();
+        // if(count($services)!=0)
+        // $services = Service::find("center_id"=>$id);
         return view ('services.indexAdmin')->with('services', $services);
     }
 
@@ -31,7 +33,7 @@ class ServiceController extends Controller
         $data->center_id = $request->center_id;
         $data->user_id = Auth::user()->id;
         $data->save();
-        return redirect('serviceAdmin')->with('flash_message', 'Service Addedd!'); 
+        return redirect('/center/serviceAdmin/'.$request->center_id)->with('flash_message', 'Service Addedd!'); 
     }
 
     public function show($id)

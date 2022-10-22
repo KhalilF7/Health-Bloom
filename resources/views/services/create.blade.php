@@ -5,7 +5,7 @@
               <h3 class="page-title"> Add Service </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ url('/serviceAdmin') }}">Services</a></li>
+                  <li class="breadcrumb-item"><a href="{{ url('/center/serviceAdmin/'.$centers->id) }}">Services</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Add Service</li>
                 </ol>
               </nav>

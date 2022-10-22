@@ -39,7 +39,8 @@ Route::resource('/serviceAdmin', ServiceController::class);
 
 Route::get('/center/serviceAdmin/{id}/create', [ServiceController::class,'create']);
 
-// Route::get('/serviceAdmincreate/{id}', [ServiceController::class,'store']);
+Route::get('/center/serviceAdmin/{id}', [ServiceController::class,'index']);
+
 
 
 Route::middleware([
