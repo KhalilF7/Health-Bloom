@@ -21,7 +21,7 @@ class CenterController extends Controller
     public function index()
     {
         $centers = Center::all();
-        return view ('admin.center.centers')->with('centers', $centers);
+        return view ('admin.center.centers')->with('centers',$centers);
     }
 
     /**
@@ -31,7 +31,9 @@ class CenterController extends Controller
      */
     public function create()
     {
-        return view ('admin.center.createCenter');
+        $categoriescenter = Categorycenter::all();
+
+        return view ('admin.center.createCenter', compact('categoriescenter'));
     }
 
    
@@ -49,7 +51,7 @@ class CenterController extends Controller
         $data->address = $request->address;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->categorycenter_id=$request->categorycenter_id;
+        $data->categorycenter_id = $request->categorycenter;
         $data->user_id = Auth::user()->id;
         $data->save();
         return redirect('center')->with('flash_message', 'Center Addedd!'); 

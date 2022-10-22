@@ -85,15 +85,16 @@
                       </div>
                       <div class="form-group">
                         <label for="category">Category</label>
+                       <select id="departement" class="custom-select" name="categorycenter">
+                       <option>---Select Category---</option> 
 
-                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='category' required="">
-                        <option disabled>--Select Speciality-- </option>
-                        <option value="Paramedic"></option>
-                       
-                      </select>
-                        
+                     @foreach($categoriescenter as $categorycenter)
+
+                     <option value="{{$categorycenter->id}}">{{$categorycenter->categoryName}}</option>
+
+                     @endforeach
+             </select>
                       </div>
-                      
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>
