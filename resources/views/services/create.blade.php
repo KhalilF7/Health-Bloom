@@ -1,18 +1,33 @@
 @extends('services.layoutAdmin')
 @section('content')
-<div class="card">
-  <div class="card-header">Service create</div>
-  <div class="card-body">
-      
-      <form action="{{ url('serviceAdmin') }}" method="POST">
-        {!! csrf_field() !!}
-        <label>Name</label></br>
-        <input type="text" name="name" id="name" class="form-control"></br>
-
-        <label>Description</label></br>
-        <input type="text" name="description" id="description" class="form-control"></br>
-        
-        <label for="duration">Duration</label>
+<div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Add Service </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ url('/serviceAdmin') }}">Services</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Service</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                <div class="card-body">
+                <form class="forms-sample" action="{{ url('/serviceAdmin/')}}" method="POST">
+                {!! csrf_field() !!}
+                    @csrf
+                    <input type="hidden" name="center_id" id="center_id" value="{{$centers->id}}" id="center_id" />
+                      <div class="form-group">
+                        <label for="name">Service Name</label>
+                        <input type="text" class="form-control" style="color:#0090e7" id="name" name="name" placeholder="Service Name" required="">
+                      </div>
+                       <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" style="color:#0090e7" name="description" placeholder="Description" required="">
+                      </div>
+                      <div class="form-group">
+                      <label for="duration">Duration</label>
                         <select class="js-example-basic-single" style="width:100%; color:#0090e7" id='duration' name='duration' required="required">
                         <option value="30min">30 min</option>
                         <option value="1h">1h</option>
@@ -20,17 +35,24 @@
                         <option value="3h">3h</option>
                         <option value="4h">4h</option>
                       </select>
-        
-        <label>Price</label></br>
-        <input type="number" name="price" id="price" class="form-control"></br>
-        
-        <input type="submit" value="Save" class="btn btn-success">
-        <a href="{{ url('/serviceAdmin') }}" class="btn btn-primary" title="Back">
+                        </div>
+                       <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" style="color:#0090e7" name="price" id="price" placeholder="Price" required="">
+                      </div>
+                      <input type="submit" value="Save" class="btn btn-success">
+        <a href="{{ url('/serviceAdmin') }}" class="btn btn-dark" title="Back">
           <i class="fa fa-plus" aria-hidden="true"></i> Back
         </a>
-      </br>
-    </form>
-  
-  </div>
-</div>
+                    </form>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
 @endsection

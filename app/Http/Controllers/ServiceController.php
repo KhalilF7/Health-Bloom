@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service; 
+use App\Models\Center; 
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -14,9 +15,10 @@ class ServiceController extends Controller
         return view ('services.indexAdmin')->with('services', $services);
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('services.create');
+        $center = Center::find($id);
+        return view('services.create')->with('centers', $center);
     }
 
     public function store(Request $request)
@@ -26,6 +28,7 @@ class ServiceController extends Controller
         $data->description = $request->description;
         $data->duration = $request->duration;
         $data->price = $request->price;
+        $data->center_id = $request->center_id;
         $data->user_id = Auth::user()->id;
         $data->save();
         return redirect('serviceAdmin')->with('flash_message', 'Service Addedd!'); 

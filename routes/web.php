@@ -37,7 +37,9 @@ Route::get('/service/dislike/{id}', [ServiceUserController::class,'dislike']);
 
 Route::resource('/serviceAdmin', ServiceController::class);
 
-// Route::get('/serviceAdmin/create', [ServiceController::class,'create']);
+Route::get('/center/serviceAdmin/{id}/create', [ServiceController::class,'create']);
+
+// Route::get('/serviceAdmincreate/{id}', [ServiceController::class,'store']);
 
 
 Route::middleware([
