@@ -1,13 +1,13 @@
 @extends('services.layoutAdmin')
 @section('content')
 <div class="card">
-  <div class="card-body">
+  <div class="card-body editForm">
       
-      <form action="{{ url('serviceAdmin/' .$services->id) }}" method="post">
+      <form action="{{ url('/serviceAdmin/'.$services->id) }}" method="post" >
         {!! csrf_field() !!}
         @method("PATCH")
         <input type="hidden" name="id" id="id" value="{{$services->id}}" id="id" />
-        
+        <input type="hidden" name="center_id" id="center_id" value="{{$services->center_id}}" id="id" />
         <label>Name</label></br>
         <input type="text" name="name" id="name" value="{{$services->name}}" class="form-control"></br>
         
@@ -27,8 +27,8 @@
         <input type="number" name="price" id="price" value="{{$services->price}}" class="form-control"></br>
         
         <input type="submit" value="Update" class="btn btn-success">
-        <a href="{{ url('/serviceAdmin') }}" class="btn btn-primary" title="Back">
-    <i class="fa fa-plus" aria-hidden="true"></i> Back
+        <a href="{{ url('/center/serviceAdmin/'.$services->center_id) }}" class="btn btn-primary" title="Back">
+    <i class="fa fa-plus" aria-hidden="true" ></i> Back
   </a>
   </br>
     </form>

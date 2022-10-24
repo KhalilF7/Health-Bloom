@@ -12,7 +12,7 @@
         <p class="card-text">Dislike : {{ $services->dislike }}</p>
         <p class="card-text">Status : {{ $services->status }}</p>
   </div>
-  <a href="{{ url('/serviceAdmin') }}" class="btn btn-success btn-sm" title="Back">
+  <a href="{{ url('/center/serviceAdmin/'.$services->center_id) }}" class="btn btn-success btn-sm" title="Back">
     <i class="fa fa-plus" aria-hidden="true"></i> Back
   </a>
     </hr>

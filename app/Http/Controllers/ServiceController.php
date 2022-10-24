@@ -54,7 +54,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $input = $request->all();
         $service->update($input);
-        return redirect('serviceAdmin')->with('flash_message', 'service Updated!');
+        return redirect('/center/serviceAdmin/'.$request->center_id)->with('flash_message', 'service Updated!');
     }
 
     public function destroy($id)
