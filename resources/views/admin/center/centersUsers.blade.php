@@ -138,21 +138,17 @@
 
           <div class="card-blog">
             <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
+             
               <a href="blog-details.html" class="post-thumb">
-                <img src="../assets/img/blog/blog_3.jpg" alt="">
+                <img width="150" src="imagecenter/{{$item->imagecenter}}" alt="">
               </a>
             </div>
             <div class="body">
               <h5 class="post-title"><a href="blog-details.html">{{ $item->name }}</a></h5>
               <div class="site-info">
                 <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="../assets/img/person/person_2.jpg" alt="">
-                  </div>
-                  <span>Diego Simmons</span>
+                  
+                  <span>{{$item->address}}</span>
                 </div>
                 <span class="mai-time"></span> 2 months ago
               </div>

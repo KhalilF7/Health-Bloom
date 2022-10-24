@@ -51,6 +51,10 @@ class CenterController extends Controller
         $data->address = $request->address;
         $data->email = $request->email;
         $data->phone = $request->phone;
+        $imagecenter = $request->file;
+        $imagename = time().'.'.$imagecenter->getClientOriginalExtension();
+        $request->file->move('imagecenter', $imagename);
+        $data->imagecenter = $imagename;
         $data->categorycenter_id = $request->categorycenter;
         $data->user_id = Auth::user()->id;
         $data->save();
@@ -76,9 +80,10 @@ class CenterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   $categoriescenter = Categorycenter::all();
+
         $center = Center::find($id);
-        return view('admin.center.editcenter')->with('centers', $center);
+        return view('admin.center.editcenter',compact('categoriescenter'))->with('centers', $center);;
     
     }
 
@@ -92,8 +97,21 @@ class CenterController extends Controller
     public function update(Request $request, $id)
     {
         $center = Center::find($id);
-        $input = $request->all();
-        $center->update($input);
+
+        $center->name = $request->name;
+        $center->description = $request->description;
+        $center->address = $request->address;
+        $center->email = $request->email;
+        $center->phone = $request->phone;
+        $imagecenter = $request->file;
+        if($imagecenter)
+        {
+            $imagename = time().'.'.$imagecenter->getClientOriginalExtension();
+            $request->file->move('imagecenter', $imagename);
+            $center->imagecenter = $imagename;
+        }
+       
+         $center->save();
         return redirect('center')->with('flash_message', 'center Updated!');
     }
 

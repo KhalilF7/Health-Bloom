@@ -59,8 +59,7 @@
                 <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                    <form class="forms-sample" action="{{ url('center') }}" method="post">
-
+                    <form class="forms-sample" action="{{ url('center') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                       <div class="form-group">
@@ -86,14 +85,16 @@
                       <div class="form-group">
                         <label for="category">Category</label>
                        <select id="departement" class="custom-select" name="categorycenter">
-                       <option>---Select Category---</option> 
+                          <option>---Select Category---</option> 
+                                 @foreach($categoriescenter as $categorycenter)
+                           <option value="{{$categorycenter->id}}">{{$categorycenter->categoryName}}</option>
 
-                     @foreach($categoriescenter as $categorycenter)
-
-                     <option value="{{$categorycenter->id}}">{{$categorycenter->categoryName}}</option>
-
-                     @endforeach
-             </select>
+                                @endforeach
+                        </select> 
+                      </div>
+                      <div class="form-group">
+                        <label>Center Image</label>
+                        <input type="file" name="file" required="" >
                       </div>
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>

@@ -13,7 +13,7 @@ class Center extends Model
     use HasFactory;
     protected $table = 'centers';
     protected $primaryKey = 'id';
-    protected $fillable = ['name','description','address','email','phone'];
+    protected $fillable = ['name','description','address','email','phone','imagecenter'];
     
 
     public function user()

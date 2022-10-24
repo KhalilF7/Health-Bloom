@@ -20,6 +20,7 @@ class CreateCentersTable extends Migration
             $table->string("address");
             $table->string("email");
             $table->string("phone");
+            $table->string('imagecenter');
             $table->foreignId("user_id")
                   ->references("id")
                   ->on("users")
