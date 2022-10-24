@@ -9,6 +9,7 @@ class Feedback extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     /**
      * The attributes that are mass assignable.
      *
@@ -16,13 +17,17 @@ class Feedback extends Model
      */
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'status', 
+        'rating',
     ];
 
-    public function rating()
-    {
-        return $this->belongsTo('App\Models\Rating');
-    }
+    // public function categories()
+    // {
+    //     return $this->belongsTo('App\Models\CategoryFeedback');
+    // }
+
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');
@@ -33,5 +38,10 @@ class Feedback extends Model
         return $this->belongsTo('App\Models\Center');
     }
 
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 
 }

@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\CentersController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FeedbackBackendController;
+use App\Http\Controllers\CategoryFeedbackController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +32,17 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/center/{id}', [CentersController::class, 'show']);
+// Route::get('/feedback/{id}/edit', [FeedbackController::class, 'showRating']);
+
+Route::resource('feedback', FeedbackController::class);
+
+Route::resource('feedbackAdmin', FeedbackBackendController::class);
+
+Route::resource('category', CategoryFeedbackController::class);
+
+Route::resource('/create', FeedbackController::class);
+// Route::post('store', 'CommentController@store')->name("comments.store");
+Route::resource("comments", CommentController::class);

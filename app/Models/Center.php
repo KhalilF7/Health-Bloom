@@ -9,8 +9,8 @@ class Center extends Model
 {
     use HasFactory;
 
-    public function ratings()
+    public function feedbacks()
     {
-        return $this->hasMany('App\Models\Rating');
+        return $this->hasMany('App\Models\Feedback');
     }
 }

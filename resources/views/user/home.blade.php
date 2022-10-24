@@ -10,15 +10,18 @@
 
   <title>Health Bloom - Medical Center</title>
 
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/maicons.css')}}">
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="{{ URL::asset('fa/css/all.css')}}">
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.css')}}">
 
-  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendor/owl-carousel/css/owl.carousel.css')}}">
+
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendor/animate/animate.css')}}">
+
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/theme.css')}}">
 </head>
 <body>
 
@@ -77,7 +80,7 @@
               <a class="nav-link" href="doctors.html">Doctors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">News</a>
+              <a class="nav-link" href="/feedback">Feedback</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
@@ -119,7 +122,7 @@
       </div>
     </div>
   </div>
-
+ 
 
   <div class="bg-light">
     <div class="page-section py-3 mt-md-n5 custom-index">
@@ -176,6 +179,8 @@
   @include('user.latestnews')
 
   @include('user.appointment')
+
+ 
 
   <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/banner-pattern.svg);">
     <div class="container py-5 py-lg-0">
@@ -241,15 +246,19 @@
     </div>
   </footer>
 
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
-
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
-
-<script src="../assets/vendor/wow/wow.min.js"></script>
-
-<script src="../assets/js/theme.js"></script>
   
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="../assets/vendor/wow/wow.min.js"></script>
+<script src="../assets/js/theme.js"></script>
+
+
+
+@stack('modal')
+    <script src="{{ asset('js/jquery.slim.min.js')}}"></script>
+    <script src="{{ asset('bs/js/bootstrap.min.js')}}"></script>
+@stack('js')
+
 </body>
 </html>
