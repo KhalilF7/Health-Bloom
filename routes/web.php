@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CentersController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FeedbackBackendController;
 use App\Http\Controllers\CategoryFeedbackController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CenterController;
+use App\Http\Controllers\CategorycenterController;
+use App\Http\Controllers\CenterUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +26,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -34,7 +38,6 @@ Route::middleware([
 });
 
 
-Route::get('/center/{id}', [CentersController::class, 'show']);
 // Route::get('/feedback/{id}/edit', [FeedbackController::class, 'showRating']);
 
 Route::resource('feedback', FeedbackController::class);
@@ -46,3 +49,7 @@ Route::resource('category', CategoryFeedbackController::class);
 Route::resource('/create', FeedbackController::class);
 // Route::post('store', 'CommentController@store')->name("comments.store");
 Route::resource("comments", CommentController::class);
+
+Route::resource('/categorycenter',CategorycenterController::class);
+Route::resource('/center',CenterController::class);
+Route::resource('/centerUser',CenterUserController::class);

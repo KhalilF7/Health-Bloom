@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Center;
 
 class User extends Authenticatable
 {
@@ -68,4 +69,10 @@ class User extends Authenticatable
         return $this->hasMany(Feedback::class);
 
         }
+
+    public function centers()
+    {
+        return $this->hasMany(Center::class);
+    }
+
 }
