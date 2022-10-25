@@ -63,6 +63,8 @@ Route::get('/center/serviceAdmin/material/active/{id}', [MaterialController::cla
 
 Route::get('/center/serviceAdmin/material/{id}/show', [MaterialController::class,'show']);
 
+Route::get('/center/serviceAdmin/material/{id}/edit', [MaterialController::class,'edit']);
+
 Route::get('/report',function(){
  Mail::to('nourelhouda.mohsni@esprit.tn')
  ->send(new contactMail());

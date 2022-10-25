@@ -53,7 +53,7 @@ class MaterialController extends Controller
         $material = Material::find($id);
         $input = $request->all();
         $material->update($input);
-        return redirect('/center/serviceAdmin/material'.$request->service_id)->with('flash_message', 'material Updated!');
+        return redirect('/center/serviceAdmin/material/'.$request->service_id)->with('flash_message', 'material Updated!');
     }
 
     public function destroy($id)
