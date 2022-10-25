@@ -4,7 +4,7 @@
     <div class="page-section">
         <div class="container">
             @if(count($services) !==0)
-            <table class="text-center wow fadeInUp" align="center" width="90%">
+            <table class="text-center wow fadeInUp" align="center" width="100%">
                 <tr style="padding: 6px 12px; background-color: #00D9A5; color: #fff; border-radius: 4px;">
                     <th style="padding: 10px; font-size: 20px;">Name</th>
                     <th style="padding: 10px; font-size: 20px;">Description</th>
@@ -12,7 +12,7 @@
                     <th style="padding: 10px; font-size: 20px;">Price</th>
                     <th style="padding: 10px; font-size: 20px;">Like</th>
                     <th style="padding: 10px; font-size: 20px;">Dislike</th>
-                    <th style="padding: 10px; font-size: 20px;"></th>
+                    <th style="padding: 10px; font-size: 20px;">Actions</th>
                 </tr>
 
                 @foreach($services as $item)
@@ -30,12 +30,13 @@
                 <td>
                 @if($item->status=="Active")
                                             <!-- <a href="{{ url('/service/' . $item->id) }}" title="View Service"><button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
-                                            <button type="submit" class="btn btn-primary" title="Report Service" onclick="return confirm(&quot;The report mail : Hi Health-Bloom your service is far from our request please try to check the likes and dislikes to improve your center ! Confirm report?&quot;)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="{{ url('/report') }}" title="Report Service">Report</a></button>
-                                            <button type="submit" class="btn btn-success" title="Like Service" onclick="return confirm(&quot;Confirm like?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/service/like', $item->id)}}">Like</a>
+                                            <button type="submit" title="Report Service" onclick="return confirm(&quot;The report mail : Hi Health-Bloom your service is far from our request please try to check the likes and dislikes to improve your center ! Confirm report?&quot;)"><a href="{{ url('/report') }}" title="Report Service" class="btn btn-primary">Report</a></button>
+                                            <button type="submit" title="Message Service" onclick="return confirm(&quot;Some problems ! Confirm message?&quot;)"><a href="{{ url('/sendSMS') }}" title="Message Service" class="btn btn-primary" >Send message</a></button>
+                                            <button type="submit"  title="Like Service" onclick="return confirm(&quot;Confirm like?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/service/like', $item->id)}}" class="btn btn-success">Like</a>
                                             </button>
-                                            <button type="submit" class="btn btn-success" title="Dislike Service" onclick="return confirm(&quot;Confirm dislike?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/service/dislike', $item->id)}}">Dislike</a>
+                                            <button type="submit" title="Dislike Service" onclick="return confirm(&quot;Confirm dislike?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/service/dislike', $item->id)}}" class="btn btn-success">Dislike</a>
                                             </button>
                                             @endif
                                         </td>

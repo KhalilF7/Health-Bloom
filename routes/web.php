@@ -48,6 +48,8 @@ Route::get('/report',function(){
  return redirect('/service');
 });
 
+Route::get('/sendSMS',[App\Http\Controllers\TwilioSMSController::class,'index']);
+
 
 Route::middleware([
     'auth:sanctum',
