@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Appointment;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,11 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 
     /**
      * The attributes that are mass assignable.
