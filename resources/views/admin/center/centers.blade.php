@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -68,7 +70,6 @@
                             <td>{{ $item->email }}</td>
                             <td>{{$item->phone }}</td>
                             <td>
-                                <a  title="View Center"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                 <a href="{{ url('/center/' . $item->id . '/edit') }}" title="Edit Center"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                      <form method="POST" action="{{ url('/center' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}

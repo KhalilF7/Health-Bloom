@@ -45,6 +45,8 @@ class CenterController extends Controller
      */
    public function store(Request $request)
     {
+
+       
         $data = new Center;
         $data->name = $request->name;
         $data->description = $request->description;
@@ -69,8 +71,7 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-         $center = Center::find($id);
-        return view('center.showcenter')->with('centers', $center);
+        
     }
 
     /**

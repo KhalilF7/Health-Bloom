@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 <body>
 
@@ -131,26 +134,26 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Our Centers</h1>
 
-      <div class="row mt-5">
+      <div class="row mt-5" >
          @foreach($centers as $item)
 
-        <div class="col-lg-4 py-2 wow zoomIn">
+        <div class="col-lg-4 py-2 wow zoomIn" >
 
-          <div class="card-blog">
+          <div class="card-blog" >
             <div class="header">
              
-              <a href="blog-details.html" class="post-thumb">
+              <a href="{{ url('/centerUser/' . $item->id ) }}" class="post-thumb">
                 <img width="150" src="imagecenter/{{$item->imagecenter}}" alt="">
               </a>
             </div>
             <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">{{ $item->name }}</a></h5>
+              <h5 class="post-title"><a href="{{ url('/centerUser/' . $item->id ) }}">  {{ $item->name }}</a></h5>
               <div class="site-info">
                 <div class="avatar mr-2">
-                  
-                  <span>{{$item->address}}</span>
+                  <span><i class="fa fa-envelope-o" aria-hidden="true"></i> {{$item->email}}</span>
                 </div>
-                <span class="mai-time"></span> 2 months ago
+               
+                <i class="fa-sharp fa-solid fa fa-phone"></i>  {{$item->phone}}
               </div>
             </div>
           </div>

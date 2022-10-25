@@ -48,7 +48,10 @@ class CenterUserController extends Controller
      */
     public function show($id)
     {
-        //
+         {
+         $center = Center::find($id);
+        return view('admin.center.showcenter')->with('centers', $center);
+    }
     }
 
     /**
