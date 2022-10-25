@@ -8,17 +8,14 @@
                
             </ul>
             
-              <div class="search"  width:100%;
+              <div class="search"  width:80%;
           text-align:15px;
           padding-top:15px;
           padding-bottom:15px;>
                   <input type="search" name="search" id="search" placeholder="Search Something here" class="form-control">
               </div>
-
-            </div>
-                    <h4 class="card-title">Centers List</h4>
-                    <a href="{{ url('/center/create') }}" type="button" class="btn btn-primary btn-fw">Ajouter un nouveau centre</a>
-
+                    <h4 class="card-title ml-5 mt-5">  Centers List</h4>
+                    <a href="{{ url('/center/create') }}" type="button" class="btn btn-primary " style="width:300px">Ajouter un nouveau centre</a>
                     </p>
           
                     <div class="table-responsive">
@@ -30,6 +27,7 @@
                             <th>Address</th>
                             <th>Email</th>
                             <th>Mobile</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody id="Content">
@@ -58,6 +56,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
 
   <script type="text/javascript"> 

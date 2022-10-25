@@ -37,15 +37,4 @@ class ServiceUserController extends Controller
         return redirect()->back();
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     // $service = Service::find($id);
-    //     // $serviceapproved=$service;
-    //     // $serviceapproved->status='inprogress';
-    //     // $service->update($serviceapproved);
-    //     // return redirect('serviceAdmin')->with('flash_message', 'service Approved!');
-    //     // $service = Service::find($id);
-    //     Service::where('id', $id)->update(array('status' => 'inprogress'));
-    //     return redirect('service')->with('flash_message', 'service Approved!');
-    // }
 }

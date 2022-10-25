@@ -24,6 +24,14 @@ class MaterialController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'reference' => 'required|min:4',
+            'name' => 'required|min:4',
+            'description'=>'required|min:5',
+            'price'=>'required|integer|between:100,1000000',
+            'nbItems'=>'required|integer|between:10,10000',
+    
+        ]);
         $data = new Material;
         $data->reference = $request->reference;
         $data->name = $request->name;
@@ -50,6 +58,14 @@ class MaterialController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'reference' => 'required|min:4',
+            'name' => 'required|min:4',
+            'description'=>'required|min:5',
+            'price'=>'required|integer|between:100,1000000',
+            'nbItems'=>'required|integer|between:10,10000',
+    
+        ]);
         $material = Material::find($id);
         $input = $request->all();
         $material->update($input);

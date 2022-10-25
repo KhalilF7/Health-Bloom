@@ -17,14 +17,20 @@
                 <form class="forms-sample" action="{{ url('/serviceAdmin/')}}" method="POST">
                 {!! csrf_field() !!}
                     @csrf
-                    <input type="hidden" name="center_id" id="center_id" value="{{$centers->id}}" id="center_id" />
+                    <input type="hidden" name="center_id" id="center_id" value="{{$centers->id}}" />
                       <div class="form-group">
                         <label for="name">Service Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" id="name" name="name" placeholder="Service Name" required="">
+                        <input type="text" class="@error('name') is-invalid @enderror form-control" style="color:#0090e7" id="name" name="name" placeholder="Service Name" required="">
+                        @error('name')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                        <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="description" placeholder="Description" required="">
+                        <input type="text" class="@error('description') is-invalid @enderror form-control" style="color:#0090e7" name="description" placeholder="Description" required="">
+                        @error('description')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                       <label for="duration">Duration</label>
@@ -38,7 +44,10 @@
                         </div>
                        <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" style="color:#0090e7" name="price" id="price" placeholder="Price" required="">
+                        <input type="number" class="@error('price') is-invalid @enderror form-control" style="color:#0090e7" name="price" id="price" placeholder="Price" required="">
+                        @error('price')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <input type="submit" value="Save" class="btn btn-success">
                       <a href="{{ url('/center/serviceAdmin/'.$centers->id) }}" class="btn btn-primary" title="Back"><i class="fa fa-plus" aria-hidden="true" ></i> Back</a>

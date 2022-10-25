@@ -23,6 +23,12 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|min:4',
+            'description'=>'required|min:5',
+            'price'=>'required|integer|between:100,1000000',
+    
+        ]);
         $data = new Service;
         $data->name = $request->name;
         $data->description = $request->description;
@@ -49,6 +55,12 @@ class ServiceController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|min:4',
+            'description'=>'required|min:5',
+            'price'=>'required|integer|between:100,1000000',
+    
+        ]);
         $service = Service::find($id);
         $input = $request->all();
         $service->update($input);
