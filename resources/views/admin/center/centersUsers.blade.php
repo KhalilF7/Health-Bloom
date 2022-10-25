@@ -156,6 +156,9 @@
                 <i class="fa-sharp fa-solid fa fa-phone"></i>  {{$item->phone}}
               </div>
             </div>
+            <button  class="btn btn-primary" title="services" ><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/center/service', $item->id)}}">show center services</a>
+                                            </button>
           </div>
             
         </div>

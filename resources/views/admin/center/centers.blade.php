@@ -49,6 +49,7 @@
                     <a href="{{ url('/center/create') }}" type="button" class="btn btn-primary btn-fw">Ajouter un nouveau centre</a>
 
                     </p>
+          
                     <div class="table-responsive">
                       <table class="table">
                         <thead>

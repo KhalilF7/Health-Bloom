@@ -40,5 +40,6 @@ Route::middleware([
 Route::resource('/categorycenter',CategorycenterController::class);
 Route::resource('/center',CenterController::class);
 Route::resource('/centerUser',CenterUserController::class);
+Route::get('generatepdf', [CenterController::class, 'generatepdf'])->name('center.pdf');
 
 
