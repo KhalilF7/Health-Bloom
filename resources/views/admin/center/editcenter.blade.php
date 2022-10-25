@@ -65,23 +65,38 @@
 
                       <div class="form-group">
                         <label for="name">Center Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="name" placeholder="Center Name"  value="{{$centers->name}}" required="">
+                        <input type="text" class="@error('name') is-invalid @enderror" style="color:#0090e7" name="name" placeholder="Center Name"  value="{{$centers->name}}" required="">
+                          @error('name')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="description" placeholder="Description" value="{{$centers->description}}" required="">
+                        <input type="text" class="@error('description') is-invalid @enderror"  style="color:#0090e7" name="description" placeholder="Description" value="{{$centers->description}}" required="">
+                         @error('description')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="address" placeholder="Address" value="{{$centers->address}}" required="">
+                        <input type="text" class="@error('address') is-invalid @enderror" style="color:#0090e7" name="address" placeholder="Address" value="{{$centers->address}}" required="">
+                        @error('address')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="email" placeholder="Email" value="{{$centers->email}}" required="">
+                        <input type="text" class="@error('email') is-invalid @enderror" style="color:#0090e7" name="email" placeholder="Email" value="{{$centers->email}}" required="">
+                         @error('email')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="phonenumber">Phone Number</label>
-                        <input type="number" class="form-control" style="color:#0090e7" name="phone" placeholder="Phone Number" value="{{$centers->phone}}" required="">
+                        <input type="number" class="@error('phone') is-invalid @enderror" style="color:#0090e7" name="phone" placeholder="Phone Number" value="{{$centers->phone}}" required="">
+                       @error('phone')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                      
                        <div class="form-group">

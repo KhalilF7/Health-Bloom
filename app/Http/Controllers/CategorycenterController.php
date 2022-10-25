@@ -37,6 +37,11 @@ class CategorycenterController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+        'categoryName' => 'required|min:8'
+       
+    ]);
+ 
          $input = $request->all();
         Categorycenter::create($input);
         return redirect('categorycenter')->with('flash_message', 'Category Addedd!'); 
@@ -74,6 +79,10 @@ class CategorycenterController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $validated = $request->validate([
+        'categoryName' => 'required|min:8'
+       
+    ]);
         $category = Categorycenter::find($id);
         $input = $request->all();
         $category->update($input);

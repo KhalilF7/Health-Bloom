@@ -44,6 +44,9 @@
           {{session()->get('message')}}
         </div>
         @endif
+
+    
+
         
         <div class="content-wrapper">
             <div class="page-header">
@@ -62,10 +65,13 @@
                     <form class="forms-sample" action="{{ url('categorycenter') }}" method="post">
 
                     @csrf
-
+  
                       <div class="form-group">
                         <label for="categoryName">Category Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="categoryName" placeholder="Category Name" required="">
+                        <input type="text" class="@error('categoryName') is-invalid @enderror" style="color:#0090e7" name="categoryName" placeholder="Category Name" required="">
+                        @error('categoryName')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       
                       </div> 

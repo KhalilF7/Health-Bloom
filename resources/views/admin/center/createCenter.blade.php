@@ -64,23 +64,38 @@
 
                       <div class="form-group">
                         <label for="name">Center Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="name" placeholder="Center Name" required="">
+                        <input type="text" class="@error('name') is-invalid @enderror" style="color:#0090e7" name="name" placeholder="Center Name" required="">
+                       @error('name')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="description" placeholder="Description" required="">
+                        <input type="text" class="@error('description') is-invalid @enderror" style="color:#0090e7" name="description" placeholder="Description" required="">
+                         @error('description')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="address" placeholder="Address" required="">
+                        <input type="text" class="@error('address') is-invalid @enderror" style="color:#0090e7" name="address" placeholder="Address" required="">
+                       @error('address')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="email" placeholder="Email" required="">
+                        <input type="text" class="@error('email') is-invalid @enderror"  style="color:#0090e7" name="email" placeholder="Email" required="">
+                      @error('email')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="phonenumber">Phone Number</label>
-                        <input type="number" class="form-control" style="color:#0090e7" name="phone" placeholder="Phone Number" required="">
+                        <input type="number" class="@error('phone') is-invalid @enderror" style="color:#0090e7" name="phone" placeholder="Phone Number" required="">
+                       @error('phone')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="category">Category</label>

@@ -46,7 +46,15 @@ class CenterController extends Controller
    public function store(Request $request)
     {
 
-       
+        $validated = $request->validate([
+        'name' => 'required|min:4',
+        'description'=>'required',
+        'address'=>'required|min:4',
+        'email'=>'required|email:rfc,dns',
+        'phone'=>'required',
+
+    ]);
+
         $data = new Center;
         $data->name = $request->name;
         $data->description = $request->description;
@@ -96,7 +104,17 @@ class CenterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {  
+        
+        $validated = $request->validate([
+        'name' => 'required|min:4',
+        'description'=>'required',
+        'address'=>'required|min:4',
+        'email'=>'required|email:rfc,dns',
+        'phone'=>'required',
+
+    ]);
+        
         $center = Center::find($id);
 
         $center->name = $request->name;
