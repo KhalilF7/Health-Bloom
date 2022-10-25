@@ -68,18 +68,26 @@
                         @endforeach
                         
                     </td>
-                       <td>{{ $feedback->center_id }}</td>
+                    @foreach ($centers as $center)
+                      @if($center->id == $feedback->center_id)
+                       <td>{{ $center->name }}</td>
+                       @endif
+                    @endforeach
                        <td>{{ $feedback->name }}</td>
                        <td>{{ $feedback->description }}</td>
                        <td>{{ $feedback->rating }}</td>
                         <td>
+                          @if($feedback->user_id == Auth::user()->id)
                             <a href="{{ route('feedback.show',['feedback'=>$feedback->id])}}" class="btn btn-sm">
                                 <i class="fas fa-eye"></i>
                             </a>
                         
-                            <a href="{{ route('feedback.edit',['feedback'=>$feedback->id])}}" class="btn btn-sm">
-                                <i class="fas fa-edit"></i>
+                            <a class="btn btn-sm"  href="{{ url('/rating') }}" >
+                                <i class="fas fa-edit"> Rating</i>
                             </a>
+                            <a href="{{ route('feedback.edit',['feedback'=>$feedback->id])}}" class="btn btn-sm">
+                              <i class="fas fa-edit"></i>
+                          </a>
                             {{-- <button class="btn btn-sm" type="button" id="modalDelete" data-url="{{route('feedback.destroy',['feedback'=>$feedback->id])}}">
                               <i class="fas fa-trash"></i>
                             </button> --}}
@@ -88,13 +96,18 @@
                               {{ csrf_field() }}
                               <button type="submit" class="btn btn-danger btn-sm" title="Delete category" onclick="return confirm(&quot;Confirm delete?&quot;)" style="background-color:rgba(255, 0, 0, 0.397)"> <i class="fas fa-trash"></i></button>
                           </form>
-
+                        @else
+                        <a href="{{ route('feedback.show',['feedback'=>$feedback->id])}}" class="btn btn-sm">
+                          <i class="fas fa-eye"></i>
+                      </a>
+                      @endif
                         </td>
                        
                    </tr>
                @endforeach
            </tbody>
         </table>
+        
     </div>
     <div class="card-body pb-0">
       {{ $feedbacks->appends(['search'=>request()->search])->links('vendor.pagination.bootstrap-4')}}

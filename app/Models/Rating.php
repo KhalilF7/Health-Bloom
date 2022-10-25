@@ -15,13 +15,13 @@ class Rating extends Model
         'comment'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\Models\User');
+    // }
 
-    public function center()
+    public function feedback()
     {
-        return $this->belongsTo('App\Models\Center');
+        return $this->belongsTo('App\Models\Feedback');
     }
 }

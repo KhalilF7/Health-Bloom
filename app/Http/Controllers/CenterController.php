@@ -66,7 +66,7 @@ class CenterController extends Controller
     public function show($id)
     {
          $center = Center::find($id);
-        return view('center.showcenter')->with('centers', $center);
+        return view('admin.center.showcenter')->with('centers', $center);
     }
 
     /**

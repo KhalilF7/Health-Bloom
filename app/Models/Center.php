@@ -30,5 +30,6 @@ class Center extends Model
     {
         return $this->belongsTo(Categorycenter::class);
     }
+    
 
 }

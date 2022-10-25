@@ -10,59 +10,29 @@
                 @csrf
                 <div class="mb-3">
                      <label for="" class= "form-labe1"> Name</label>
-                     <input type="text" name= "name" value="{{ old('name') }}"
+                     <input type="text" name= "name" id="name"
                       class= "form-control @error('name') is-invalid @enderror">
-                     @error('name')
+                     {{-- @error('name')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>
-                     @enderror
+                     @enderror --}}
                 </div>
 
                 <div class="mb-3">
                      <label for="" class= "form-labe1"> Description</label>
-                     <input type="text" name= "description" value="{{ old('description') }}"
+                     <input type="text" name= "description" id="description"
                       class= "form-control @error('description') is-invalid @enderror">
-                     @error('description')
+                     {{-- @error('description')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>
-                     @enderror
+                     @enderror --}}
                 </div>
 
-                <div class="mb-3">
-                     <label for="" class= "form-labe1"> Center </label>
-                     <input type="text" name= "center" value="{{ old('center_id') }}"
-                      class= "form-control @error('center_id') is-invalid @enderror">
-                     @error('center_id')
-                          <div class="invalid-feedback">
-                              {{ $message }}
-                          </div>
-                     @enderror
-                </div>
+        
 
-                {{-- <div class="mb-3">
-                     <label for="" class= "form-labe1"> User </label>
-                     <input type="text" name= "user" value="{{ old('user_id') }}"
-                      class= "form-control @error('user_id') is-invalid @enderror">
-                     @error('user_id')
-                          <div class="invalid-feedback">
-                              {{ $message }}
-                          </div>
-                     @enderror
-                </div> --}}
-                <div class="mb-3">
-                  <label for="" class= "form-labe1"> Rating </label>
-                  <input type="text" name= "rating" value="{{ old('rating') }}"
-                   class= "form-control @error('rating') is-invalid @enderror">
-                  @error('rating')
-                       <div class="invalid-feedback">
-                           {{ $message }}
-                       </div>
-                  @enderror
-              </div>
-
-
+{{-- 
             <div class="mb-3">
               <label for="" class= "form-labe1"> Status </label>
               {{-- <input type="text" name= "status" value="{{ old('status') }}"
@@ -72,16 +42,28 @@
                       {{ $message }}
                   </div> --}}
                   
-                  <select name= "status" value="{{ old('status') }}"
-                  class= "form-control @error('status') is-invalid @enderror" class="form-control">>
+                    {{-- <select name= "status" value="{{ old('status') }}"
+                        class= "form-control @error('status') is-invalid @enderror" class="form-control">>
                     <option value="">--Please choose an option--</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                </select>
+                    <option value="0">Activé</option>
+                    <option value="1">Archivé</option>
+                    </select> --}}
               {{-- @enderror --}}
-            </div>
-                </div>
-                
+            {{-- </div> --}} 
+            
+            <div class="form-group">
+                <label for="center_id">Center</label>
+               <select id="center_id" class="custom-select" name="center_id">
+               <option>---Select center---</option> 
+
+             @foreach($centers as $center)
+
+             <option value="{{$center->id}}">{{$center->name}}</option>
+
+             @endforeach
+     </select>
+              </div>
+             
                 
  <div class="card-footer text-end">
      <button class="btn btn-primary" type="submit" style="background-color: #00D9A5">

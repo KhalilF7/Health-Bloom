@@ -20,11 +20,11 @@
                     @include('feedback.commentsDisplay', ['comments' => $feedback->comments, 'feedback_id' => $feedback->id]) 
 
                     <hr />
-                    <h4>Add comment</h4>
+                    
                     <form method="post" action="{{ route('comments.store') }}">
                         @csrf
                         <div class="form-group">
-                            <textarea class="form-control" name="body"></textarea>
+                            <textarea class="form-control" name="body" placeholder="Add comment..."></textarea>
                             <input type="hidden" name="feedback_id" value="{{ $feedback->id }}" />
                         </div>
                         <div class="form-group">

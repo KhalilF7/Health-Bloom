@@ -9,7 +9,7 @@ class Feedback extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    //protected $primaryKey = 'feedback_id';
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +20,7 @@ class Feedback extends Model
         'description',
         'status', 
         'rating',
+        
     ];
 
     // public function categories()
@@ -42,6 +43,11 @@ class Feedback extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\Rating');
     }
 
 }

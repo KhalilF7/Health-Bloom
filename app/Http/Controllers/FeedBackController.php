@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Feedback;
 use App\Models\User;
+use App\Models\Center;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,9 +24,11 @@ class FeedbackController extends Controller
                         ->get();
         })->paginate(5);
         $users = User::all();
+        $centers = Center::all();
         return view("feedback.index",[
         'feedbacks'=>$feedbacks,
         'users'=>$users,
+        'centers'=>$centers,
     ]);
     }
 
@@ -34,40 +38,37 @@ class FeedbackController extends Controller
     return view('feedback.showDetailsFeedback', ['feedback'=>$feedback]);
 }
 
-// public function showRating($id)
-// {
-//     $feedback=Feedback::findOrFail($id);
-//     return view('feedback.index', compact('feedback'));
+
+// public function reviewstore(Request $request){
+//     $review = new Rating();
+//     $review->feedback_id = $request->feedback_id;
+//     $review->star_rating = $request->rating;
+//     $review->user_id = Auth::user()->id;
+//     $review->save();
+//     return redirect()->back()->with('flash_msg_success','Your review has been submitted Successfully,');
 // }
 
+
+
     public function create(){
-     return view('feedback.createFeedback');
+    $centers = Center::all();
+     return view('feedback.createFeedback', compact('centers'));
 }
-
-
-
 
 public function store(Request $request){
     $request->validate([
         'name'=>'required|between:3,100',
         'description'=>'required|between:3,200',
+        'center_id'=>'required',
     ], [], [
         'name'=>'name',
         'description'=>'description',
+        'center_id'=>'center_id'
     ]);
-
-//     Feedback::create([
-//     'name'=> ucwords($request->name),
-//     'description'=> ucwords($request->description),
-//     'rating'=> ucwords($request->rating),
-//     'status'=> ucwords($request->status),
-
-// ]);
     $data = new Feedback;
     $data->name = $request->name;
     $data->description = $request->description;
-    $data->rating = $request->rating;
-    $data->status = $request->status;
+    $data->center_id = $request->center_id;
     $data->user_id = Auth::user()->id;
     $data->save();
     return redirect()->route('feedback.index')->with( 'store', 'success');
@@ -85,24 +86,22 @@ public function update(Request $request, Feedback $feedback){
     $request->validate([
         'name'=>'required|between:3,100',
         'description'=>'required|between:3,200',
-        'comment'=>'required|between:3,200',
         'status'=>'required',
-        'center_id'=>'nullable|between:3,100',
-        'user_id'=>'nullable|between:3,100',
+        'rating'=>'required',
     ], [], [
+        'id'=>'id',
         'name'=>'name',
         'description'=>'description',
-        'comment'=>'comment',
         'status'=>'status',
+        'rating'=>'rating',
     ]);
 
     $feedback->update([
+    'id'=> ucwords($request->id),
     'name'=> ucwords($request->name),
     'description'=> ucwords($request->description),
-    'comment'=> ucwords($request->comment),
     'status'=> ucwords($request->status),
-    // 'center_id'=> ucwords($request->center_id),
-    // 'user_id'=> ucwords($request->user_id),
+    'rating'=> ucwords($request->rating),
 
 ]);
         return redirect()->route('feedback.index')->with( 'update', 'success');

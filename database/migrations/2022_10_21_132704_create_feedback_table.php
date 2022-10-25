@@ -15,25 +15,21 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating');
-            $table->integer('status');
+            $table->integer('rating')->default(0);
+            $table->integer('status')->default(0);
             $table->string('name');
             $table->text('description');
-            $table->timestamps();
-
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-                $table->foreignId("center_id")
-                      ->references("id")
-                      ->on("centers")
-                      ->onDelete("cascade")
-                      ->onUpdate("cascade");
-
-
+            $table->foreignId("center_id")
+                ->references("id")
+                ->on("centers")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+            $table->timestamps();
         });
 
 

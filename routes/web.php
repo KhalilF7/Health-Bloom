@@ -9,7 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CategorycenterController;
 use App\Http\Controllers\CenterUserController;
-
+use App\Http\Livewire\CenterRatings;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,14 +41,14 @@ Route::middleware([
 // Route::get('/feedback/{id}/edit', [FeedbackController::class, 'showRating']);
 
 Route::resource('feedback', FeedbackController::class);
-
 Route::resource('feedbackAdmin', FeedbackBackendController::class);
-
 Route::resource('category', CategoryFeedbackController::class);
-
+Route::get('/feedback/{id}', [FeedbackController::class, 'show']);
 Route::resource('/create', FeedbackController::class);
-// Route::post('store', 'CommentController@store')->name("comments.store");
 Route::resource("comments", CommentController::class);
+// Route::post('/review-store',[FeedbackController::class, 'reviewstore'])->name('review.store');
+// Route::post('store', 'CommentController@store')->name("comments.store");
+Route::get('/rating',CenterRatings::class, 'rate');
 
 Route::resource('/categorycenter',CategorycenterController::class);
 Route::resource('/center',CenterController::class);
