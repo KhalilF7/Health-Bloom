@@ -5,17 +5,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Service List</h2>
+                        <h2>Material List</h2>
                     </div>
                     <div class="card-body">
-                        @if(count($services)!=0)
-                        <a href="{{ url('/center/serviceAdmin/' . $services->first()->center_id. '/create') }}" class="btn btn-success btn-sm" title="Add New Service">
+                        @if(count($materials)!=0)
+                        <a href="{{ url('/center/serviceAdmin/material/' . $materials->first()->service_id. '/create') }}" class="btn btn-success btn-sm" title="Add New Service">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
                         <br/>
                         @else
-                        <a href="{{ url('/center/serviceAdmin/' .$id. '/create') }}" class="btn btn-success btn-sm" title="Add New Service">
+                        <a href="{{ url('/center/serviceAdmin/material/' .$id. '/create') }}" class="btn btn-success btn-sm" title="Add New Material">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
@@ -26,40 +26,40 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Reference</th>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Duration</th>
                                         <th>Price</th>
+                                        <th>Items number</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($services as $item)
+                                @foreach($materials as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->reference }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->description }}</td>
-                                        <td>{{ $item->duration }}</td>
                                         <td>{{ $item->price }}</td>
+                                        <td>{{ $item->nbItems }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
-                                        @if($item->status=="Active")
-                                            <a href="{{ url('/center/serviceAdmin/' . $item->id .'/show') }}" title="View Service"><button class="btn btn-info "><i class="fa fa-eye" aria-hidden="true"></i> Show</button></a>
-                                            <a href="{{ url('/center/serviceAdmin/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <button type="submit" class="btn btn-warning" title="Archive Service" onclick="return confirm(&quot;Confirm archive service?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/center/serviceAdmin/archive', $item->id)}}">Archive</a>
+                                        @if($item->status=="Available")
+                                            <a href="{{ url('/center/serviceAdmin/material/' . $item->id.'/show') }}" title="View Service"><button class="btn btn-info "><i class="fa fa-eye" aria-hidden="true"></i> Show</button></a>
+                                            <a href="{{ url('/center/serviceAdmin/material/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <button type="submit" class="btn btn-warning" title="Archive Service" onclick="return confirm(&quot;Confirm archive Material?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/center/serviceAdmin/material/archive', $item->id)}}">Archive</a>
                                             </button>
-                                            <form method="POST" action="{{ url('/serviceAdmin' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/serviceAdmin/material'.'/'. $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger" title="Delete Service" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
-                                            <a href="{{ url('/center/serviceAdmin/material/' . $item->id) }}" title="List Material"><button class="btn btn-warning "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Materials List</button></a>
-                                            <a href="{{ url('/center/serviceAdmin/material/' . $item->id. '/create') }}" title="create Material"><button class="btn btn-success "><i class="fa fa-eye" aria-hidden="true"></i> Add new Material</button></a>
                                         @else
-                                        <button type="submit" class="btn btn-success" title="Active Service" onclick="return confirm(&quot;Confirm archive service?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/center/serviceAdmin/active', $item->id)}}">Active</a>
+                                        <button type="submit" class="btn btn-success" title="Active Service" onclick="return confirm(&quot;Confirm archive Material?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/center/serviceAdmin/material/active', $item->id)}}">Active</a>
                                             </button>
                                             @endif
 

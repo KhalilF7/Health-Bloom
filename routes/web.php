@@ -9,6 +9,7 @@ use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CategorycenterController;
 use App\Mail\contactMail;
 use App\Http\Controllers\CenterUserController;
+use App\Http\Controllers\MaterialController;
 
 
 
@@ -30,21 +31,37 @@ Route::get('/home', [HomeController::class, 'redirect']);
 
 Route::resource('/service', ServiceUserController::class);
 
-Route::get('/serviceAdmin/archive/{id}', [ServiceController::class,'archive']);
+Route::get('/center/serviceAdmin/archive/{id}', [ServiceController::class,'archive']);
 
-Route::get('/serviceAdmin/active/{id}', [ServiceController::class,'active']);
+Route::get('/center/serviceAdmin/active/{id}', [ServiceController::class,'active']);
 
-Route::get('/service/like/{id}', [ServiceUserController::class,'like']);
+Route::get('/center/service/like/{id}', [ServiceUserController::class,'like']);
 
-Route::get('/service/dislike/{id}', [ServiceUserController::class,'dislike']);
+Route::get('/center/service/dislike/{id}', [ServiceUserController::class,'dislike']);
 
 Route::resource('/serviceAdmin', ServiceController::class);
+
+Route::resource('/serviceAdmin/material', MaterialController::class);
 
 Route::get('/center/serviceAdmin/{id}/create', [ServiceController::class,'create']);
 
 Route::get('/center/serviceAdmin/{id}', [ServiceController::class,'index']);
 
-Route::get('/center/service/{id}', [ServiceUserController::class,'index']);
+Route::get('/center/serviceAdmin/{id}/show', [ServiceController::class,'show']);
+
+Route::get('/center/serviceAdmin/{id}/edit', [ServiceController::class,'edit']);
+
+Route::get('/centerUser/service/{id}', [ServiceUserController::class,'index']);
+
+Route::get('/center/serviceAdmin/material/{id}', [MaterialController::class,'index']);
+
+Route::get('/center/serviceAdmin/material/{id}/create', [MaterialController::class,'create']);
+
+Route::get('/center/serviceAdmin/material/archive/{id}', [MaterialController::class,'archive']);
+
+Route::get('/center/serviceAdmin/material/active/{id}', [MaterialController::class,'active']);
+
+Route::get('/center/serviceAdmin/material/{id}/show', [MaterialController::class,'show']);
 
 Route::get('/report',function(){
  Mail::to('nourelhouda.mohsni@esprit.tn')

@@ -31,10 +31,10 @@
                 
                                             <!-- <a href="{{ url('/service/' . $item->id) }}" title="View Service"><button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
                                             <button type="submit"  title="Like Service" onclick="return confirm(&quot;Confirm like?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/service/like', $item->id)}}" class="btn btn-success">Like</a>
+                                            <a href="{{url('/centerUser/service/like', $item->id)}}" class="btn btn-success">Like</a>
                                             </button>
                                             <button type="submit" title="Dislike Service" onclick="return confirm(&quot;Confirm dislike?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            <a href="{{url('/service/dislike', $item->id)}}" class="btn btn-success">Dislike</a>
+                                            <a href="{{url('/centerUser/service/dislike', $item->id)}}" class="btn btn-success">Dislike</a>
                                             </button>
                                             <button type="submit" title="Report Service" onclick="return confirm(&quot;The report mail : Hi Health-Bloom your service is far from our request please try to check the likes and dislikes to improve your center ! Confirm report?&quot;)"><a href="{{ url('/report') }}" title="Report Service" class="btn btn-danger">Email Report</a></button>
                                             <button type="submit" title="Message Service" onclick="return confirm(&quot;Some problems ! Confirm message?&quot;)"><a href="{{ url('/sendSMS') }}" title="Message Service" class="btn btn-danger" >Message Report</a></button>

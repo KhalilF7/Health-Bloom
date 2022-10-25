@@ -43,7 +43,7 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
-                                            <a href="{{ url('/center/serviceAdmin/' . $item->id) }}" title="create Service"><button class="btn btn-warning btn-sm "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Services List</button></a>
+                                            <a href="{{ url('/center/serviceAdmin/' . $item->id) }}" title="List Service"><button class="btn btn-warning btn-sm "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Services List</button></a>
                                             <a href="{{ url('/center/serviceAdmin/' . $item->id . '/create') }}" title="create Service"><button class="btn btn-success btn-sm "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Add New Service</button></a>
                             </td>                      
                             </tr>

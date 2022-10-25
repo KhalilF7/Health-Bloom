@@ -12,7 +12,7 @@ class ServiceController extends Controller
     public function index($id)
     {
         $services = Service::where('center_id', $id)->get();
-        return view ('services.indexAdmin')->with('services', $services);
+        return view ('services.indexAdmin',compact('id'))->with('services', $services);
     }
 
     public function create($id)
@@ -57,8 +57,9 @@ class ServiceController extends Controller
 
     public function destroy($id)
     {
+        $service = Service::find($id);
         Service::destroy($id);
-        return redirect('serviceAdmin')->with('flash_message', 'Service deleted!'); 
+        return redirect('/center/serviceAdmin/'.$service->center_id)->with('flash_message', 'Service deleted!'); 
     }
 
     public function archive($id)
