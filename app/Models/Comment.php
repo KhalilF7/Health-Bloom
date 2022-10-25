@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'comment';
     protected $primaryKey = 'id';
-    protected $fillable = ['string','likes','dislikes','complaintId'];
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['body','complaint_id','user_id','parent_id'];
 
     public function user()
     {
@@ -21,6 +25,16 @@ class Comment extends Model
     public function complaint()
     {
         return $this->belongsTo(Complaint::class);
+    }
+
+    /**
+     * The has Many Relationship
+     *
+     * @var array
+     */
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
 

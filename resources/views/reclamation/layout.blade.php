@@ -30,7 +30,6 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
-        @include('admin.navbar')
         <!-- partial -->
         @yield('content')
         <!-- main-panel ends -->

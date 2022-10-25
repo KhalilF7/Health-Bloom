@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ComplaintAdminController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReclamationController;
+use App\Http\Controllers\ReclamationSimpleUserController;
+use App\Http\Controllers\CommentAdminController;
 
-use App\Http\Controllers\ComplaintController;
+
 
 
 /*
@@ -24,13 +25,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
 
-Route::resource("/complaint", ComplaintController::class);
-
-Route::resource("/AdminComplaint", ComplaintAdminController::class);
-
-Route::resource("/AdminComment", CommentController::class);
-
-
+Route::resource("/complaint", ReclamationSimpleUserController::class);
+Route::resource("/reclamation", ReclamationController::class);
+Route::resource("/commentAdd",CommentAdminController::class);
 
 Route::middleware([
     'auth:sanctum',

@@ -15,11 +15,12 @@ class CreateCommentTable extends Migration
     {
         Schema::create('comment', function (Blueprint $table) {
             $table->id();
-            $table->text('string');
-            $table->integer('likes');
-            $table->integer('dislikes');
-            $table->integer('complaintId');
+            $table->text('body');
+            $table->integer('complaint_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

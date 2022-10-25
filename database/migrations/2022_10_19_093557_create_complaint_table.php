@@ -19,7 +19,9 @@ class CreateComplaintTable extends Migration
             $table->string('title');
             $table->string('status');
             $table->string('classification');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

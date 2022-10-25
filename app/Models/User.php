@@ -68,6 +68,6 @@ class User extends Authenticatable
 
      public function complaints()
     {
-        return $this->hasMany(Complaint::class);
+        return $this->hasMany(Complaint::class,'user_id');
     }
 }
