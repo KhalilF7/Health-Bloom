@@ -92,6 +92,19 @@ class AppointmentController extends Controller
             $data = Appointment::find($id);
             $data->status = 'Approved';
             $data->save();
+
+            $s = Specialist::find($data->specialist_id);
+            $a = $s->name;
+
+            $basic  = new \Vonage\Client\Credentials\Basic("0acc6616", "ZQepwAxHZ0OcURKo");
+            $client = new \Vonage\Client($basic);
+
+            $response = $client->sms()->send(
+                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', 'Your appointment with $a is APPROVED!')
+            );
+
+            $message = $response->current();
+            
             return redirect()->back();
         }
         else 
@@ -108,6 +121,17 @@ class AppointmentController extends Controller
             $data = Appointment::find($id);
             $data->status = 'Canceled';
             $data->save();
+            $s = Specialist::find($data->specialist_id);
+            $a = $s->name;
+            $basic  = new \Vonage\Client\Credentials\Basic("0acc6616", "ZQepwAxHZ0OcURKo");
+            $client = new \Vonage\Client($basic);
+
+            $response = $client->sms()->send(
+                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', "Your appointment with $a is CANCELED!")
+            );
+
+            $message = $response->current();
+            
             return redirect()->back();   
         }
         else 
