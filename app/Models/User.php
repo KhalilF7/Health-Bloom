@@ -74,5 +74,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Center::class);
     }
+    public function likes()
+    {
+        return $this->belongsToMany(Feedback::class);
+    }
 
 }

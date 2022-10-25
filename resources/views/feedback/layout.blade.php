@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
@@ -74,8 +74,11 @@
               <a class="nav-link" href="doctors.html">Doctors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/feedback">Feedback</a>
-            </li>
+              <a class="nav-link" href="/feedback"
+                  >Feedback <span id="js-count">{{
+                  auth()->user()->unreadNotifications->count()
+                  }}</span></a>
+          </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
@@ -122,6 +125,12 @@
     <script src="{{ asset('bs/js/bootstrap.min.js')}}"></script>
     @stack('js')
     @livewireScripts
+    <script> 
+      window.User = {
+          id: {{ optional(auth()->user())->id }}
+      }
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 <div class="container">
    @yield('content')

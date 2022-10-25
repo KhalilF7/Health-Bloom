@@ -50,4 +50,17 @@ class Feedback extends Model
         return $this->hasMany('App\Models\Rating');
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
+
+    public function isLiked()
+    {
+        if (auth()->check()) {
+            return auth()->user()->likes->contains('id', $this->id);
+        }
+        
+    }
+
 }

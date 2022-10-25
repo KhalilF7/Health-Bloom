@@ -80,6 +80,12 @@
               <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/feedback"
+                  >Feedback <span id="js-count">{{
+                  auth()->user()->unreadNotifications->count()
+                  }}</span></a>
+          </li>
+            <li class="nav-item">
               <a class="nav-link" href="blog.html">News</a>
             </li>
             <li class="nav-item">

@@ -19,6 +19,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('status')->default(0);
             $table->string('name');
             $table->text('description');
+            $table->integer('like')->default(0);
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')

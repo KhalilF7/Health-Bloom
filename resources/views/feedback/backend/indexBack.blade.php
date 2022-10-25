@@ -35,6 +35,10 @@
                             <a href="{{ route('feedbackAdmin.show',['feedbackAdmin'=>$feedback->id])}}" class="btn btn-sm">
                                 <i class="fas fa-eye"></i>
                             </a>
+
+                            <a href="{{ url('feedbackAdmin/download/'.$feedback->id)}}" class="btn btn-sm">
+                                <i class="fas fa-download">Download</i>
+                            </a>
                         </td>
 
                        

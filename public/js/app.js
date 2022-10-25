@@ -5071,7 +5071,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+      document.addEventListener('turbo:before-fetch-request', function (event) {
+        event.detail.fetchOptions.headers['X-Socket-Id'] = _this4.socketId();
+      });
+    }
+  ),
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

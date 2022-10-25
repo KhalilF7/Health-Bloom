@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Notifications\FeedbackCommented;
+use Illuminate\Support\Facades\Notification;
 
 class CommentController extends Controller
 {
@@ -22,7 +24,9 @@ class CommentController extends Controller
         $input['user_id'] = auth()->user()->id;
     
         Comment::create($input);
-   
-        return back();
+        //dd(auth()->user());
+        //Notification::route('mail', auth()->user()->notify(new FeedbackCommented()));
+        //auth()->user()->email->notify(new FeedbackCommented($input));
+        return redirect()->back()->with('success', 'Reply Submitted Successfuly');
     }
 }

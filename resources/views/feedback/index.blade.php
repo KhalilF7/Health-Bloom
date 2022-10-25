@@ -1,6 +1,6 @@
 @extends('feedback.layout')
 @section('content')
-
+@livewireScripts
     @if ( session ('store'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> Saved Successfully! </strong> Feedback has been successfully saved.
@@ -88,6 +88,7 @@
                             <a href="{{ route('feedback.edit',['feedback'=>$feedback->id])}}" class="btn btn-sm">
                               <i class="fas fa-edit"></i>
                           </a>
+                          
                             {{-- <button class="btn btn-sm" type="button" id="modalDelete" data-url="{{route('feedback.destroy',['feedback'=>$feedback->id])}}">
                               <i class="fas fa-trash"></i>
                             </button> --}}
@@ -95,14 +96,22 @@
                               {{ method_field('DELETE') }}
                               {{ csrf_field() }}
                               <button type="submit" class="btn btn-danger btn-sm" title="Delete category" onclick="return confirm(&quot;Confirm delete?&quot;)" style="background-color:rgba(255, 0, 0, 0.397)"> <i class="fas fa-trash"></i></button>
+                              
+                              
+                              
                           </form>
                         @else
                         <a href="{{ route('feedback.show',['feedback'=>$feedback->id])}}" class="btn btn-sm">
                           <i class="fas fa-eye"></i>
-                      </a>
-                      @endif
-                        </td>
+                        </a>
+                    
                        
+                        <a style="float: right"><livewire:feedback-likes :feedback="$feedback"/> </a>
+                        </td>
+                      @endif
+                        
+
+
                    </tr>
                @endforeach
            </tbody>
@@ -113,6 +122,7 @@
       {{ $feedbacks->appends(['search'=>request()->search])->links('vendor.pagination.bootstrap-4')}}
     </div>
 </div>
+@livewireScripts
 @endsection
 
 

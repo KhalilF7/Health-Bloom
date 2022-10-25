@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
   <title>Health Bloom - Medical Center</title>
@@ -79,10 +79,14 @@
             <li class="nav-item">
               <a class="nav-link" href="doctors.html">Doctors</a>
             </li>
+            
             <li class="nav-item">
-
-              <a class="nav-link" href="/feedback">Feedback</a>
-
+              <a class="nav-link" href="/feedback"
+                  >Feedback <span id="js-count">{{
+                  auth()->user()->unreadNotifications->count()
+                  }}</span></a>
+          </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
             </li>
             <li class="nav-item">
