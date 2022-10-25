@@ -8,32 +8,40 @@ use App\Models\Specialist;
 use Notification;
 use App\Notifications\SendEmailNotification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
     public function appointment(Request $request)
     {
-        if(Auth::user()->usertype==0)
+        Validator::make($request->all(), [
+            'name'=>'required',
+            'email'=>'required|email',
+            'date'=>'required',
+            'phone'=>'required',
+            'specialist'=>'required',
+        ],[
+            'name.required'=>"This field is required",
+            'email.required'=>"This field is required",
+            'email.email'=>"This field should be in Email form",
+            'date.required'=>"This field is required",
+            'phone.required'=>"This field is required",
+            'specialist.required'=>"This field is required",
+        ])->validate();
+        $data = new Appointment;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->date = $request->date;
+        $data->phone = $request->phone;
+        $data->message = $request->message;
+        $data->specialist_id = $request->specialist;
+        $data->status = 'In Progress';
+        if(Auth::id())
         {
-            $data = new Appointment;
-            $data->name = $request->name;
-            $data->email = $request->email;
-            $data->date = $request->date;
-            $data->phone = $request->phone;
-            $data->message = $request->message;
-            $data->specialist_id = $request->specialist;
-            $data->status = 'In Progress';
-            if(Auth::id())
-            {
-                $data->user_id = Auth::user()->id;
-            }
-            $data->save();
-            return redirect()->back()->with('message', 'Appointment request has been sent seccessfully. We will contact you soon');
+            $data->user_id = Auth::user()->id;
         }
-        else 
-        {
-        return redirect()->back();
-        }
+        $data->save();
+        return redirect()->back()->with('message', 'Appointment request has been sent seccessfully. We will contact you soon');
     }
 
     public function myappointment()
