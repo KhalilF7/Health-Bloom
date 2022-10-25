@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categorycenter;
+use App\Models\Center;
 
-class CategorycenterController extends Controller
+
+class CenterUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class CategorycenterController extends Controller
      */
     public function index()
     {
-        $categoriescenter = Categorycenter::all();
-        return view ('admin.center.categoriescenter')->with('categoriescenter',$categoriescenter);
+        $centers = Center::all();
+        return view ('admin.center.centersUsers')->with('centers', $centers);
     }
 
     /**
@@ -25,8 +26,7 @@ class CategorycenterController extends Controller
      */
     public function create()
     {
-        return view ('admin.center.createCategory');
-
+        //
     }
 
     /**
@@ -37,14 +37,7 @@ class CategorycenterController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-        'categoryName' => 'required|min:8'
-       
-    ]);
- 
-         $input = $request->all();
-        Categorycenter::create($input);
-        return redirect('categorycenter')->with('flash_message', 'Category Addedd!'); 
+        //
     }
 
     /**
@@ -55,7 +48,10 @@ class CategorycenterController extends Controller
      */
     public function show($id)
     {
-        //
+         {
+         $center = Center::find($id);
+        return view('admin.center.showcenter')->with('centers', $center);
+    }
     }
 
     /**
@@ -66,8 +62,7 @@ class CategorycenterController extends Controller
      */
     public function edit($id)
     {
-         $category = Categorycenter::find($id);
-        return view('admin.center.editcategory')->with('categories', $category);
+        //
     }
 
     /**
@@ -79,14 +74,7 @@ class CategorycenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $validated = $request->validate([
-        'categoryName' => 'required|min:8'
-       
-    ]);
-        $category = Categorycenter::find($id);
-        $input = $request->all();
-        $category->update($input);
-        return redirect('categorycenter')->with('flash_message', 'category Updated!');
+        //
     }
 
     /**
@@ -97,7 +85,6 @@ class CategorycenterController extends Controller
      */
     public function destroy($id)
     {
-        Categorycenter::destroy($id);
-        return redirect('categorycenter')->with('flash_message', 'category deleted!'); 
+        //
     }
 }

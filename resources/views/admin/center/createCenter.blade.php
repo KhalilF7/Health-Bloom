@@ -59,42 +59,58 @@
                 <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                 <div class="card-body">
-                    <form class="forms-sample" action="{{ url('center') }}" method="post">
-
+                    <form class="forms-sample" action="{{ url('center') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                       <div class="form-group">
                         <label for="name">Center Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="name" placeholder="Center Name" required="">
+                        <input type="text" class="@error('name') is-invalid @enderror" style="color:#0090e7" name="name" placeholder="Center Name" required="">
+                       @error('name')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="description" placeholder="Description" required="">
+                        <input type="text" class="@error('description') is-invalid @enderror" style="color:#0090e7" name="description" placeholder="Description" required="">
+                         @error('description')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="address" placeholder="Address" required="">
+                        <input type="text" class="@error('address') is-invalid @enderror" style="color:#0090e7" name="address" placeholder="Address" required="">
+                       @error('address')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                        <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="email" placeholder="Email" required="">
+                        <input type="text" class="@error('email') is-invalid @enderror"  style="color:#0090e7" name="email" placeholder="Email" required="">
+                      @error('email')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <label for="phonenumber">Phone Number</label>
-                        <input type="number" class="form-control" style="color:#0090e7" name="phone" placeholder="Phone Number" required="">
+                        <input type="number" class="@error('phone') is-invalid @enderror" style="color:#0090e7" name="phone" placeholder="Phone Number" required="">
+                       @error('phone')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
-                      <!-- <div class="form-group">
-                        <label for="speciality">Speciality</label>
-                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='speciality' required="">
-                        <option disabled>--Select Speciality-- </option>
-                        <option value="Paramedic">Paramedic</option>
-                        <option value="Nutritionist">Nutritionist</option>
-                        <option value="Physiotherapist">Physiotherapist</option>
-                        <option value="Advisor">Advisor</option>
-                        <option value="Fitness Trainer">Fitness Trainer</option>
-                      </select>
-                      </div> -->
-                      
+                      <div class="form-group">
+                        <label for="category">Category</label>
+                       <select id="departement" class="custom-select" name="categorycenter">
+                          <option>---Select Category---</option> 
+                                 @foreach($categoriescenter as $categorycenter)
+                           <option value="{{$categorycenter->id}}">{{$categorycenter->categoryName}}</option>
+
+                                @endforeach
+                        </select> 
+                      </div>
+                      <div class="form-group">
+                        <label>Center Image</label>
+                        <input type="file" name="file" required="" >
+                      </div>
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>

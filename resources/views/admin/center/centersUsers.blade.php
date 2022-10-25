@@ -19,7 +19,8 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body>
@@ -122,29 +123,48 @@
 
     <div class="page-section pb-0">
       <div class="container">
-        <div class="row">
-    <div class="col-md-12">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">{{$centers->name}}</strong>
-          <h3 class="mb-0"><span><i class="fa-sharp fa-solid fa fa-phone"></i></span> {{$centers->phone}}</h3>
-          <div class="mb-1 text-muted"><span><i class="fa fa-home" ></i></span>  {{$centers->address}}</div>
-          <p class="card-text mb-auto">{{$centers->description}}</p>
-          <a><i class="fa fa-envelope-o" aria-hidden="true"></i> {{$centers->email}}</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-<img width="150" src="imagecenter/{{$centers->imagecenter}}" alt="">
-        </div>
-      </div>
-    </div>
-
+        
       </div>
     </div> <!-- .bg-light -->
   </div> <!-- .bg-light -->
 
 
 
-  
+  <div class="page-section bg-light">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Our Centers</h1>
+
+      <div class="row mt-5" >
+         @foreach($centers as $item)
+
+        <div class="col-lg-4 py-2 wow zoomIn" >
+
+          <div class="card-blog" >
+            <div class="header">
+             
+              <a href="{{ url('/centerUser/' . $item->id ) }}" class="post-thumb">
+                <img width="150" src="imagecenter/{{$item->imagecenter}}" alt="">
+              </a>
+            </div>
+            <div class="body">
+              <h5 class="post-title"><a href="{{ url('/centerUser/' . $item->id ) }}">  {{ $item->name }}</a></h5>
+              <div class="site-info">
+                <div class="avatar mr-2">
+                  <span><i class="fa fa-envelope-o" aria-hidden="true"></i> {{$item->email}}</span>
+                </div>
+               
+                <i class="fa-sharp fa-solid fa fa-phone"></i>  {{$item->phone}}
+              </div>
+            </div>
+            <button  class="btn btn-primary" title="services" ><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            <a href="{{url('/center/service', $item->id)}}">show center services</a>
+                                            </button>
+          </div>
+            
+        </div>
+                @endforeach
+
+</div>
 
       
 

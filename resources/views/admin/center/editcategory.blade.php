@@ -67,7 +67,10 @@
 
                       <div class="form-group">
                         <label for="categoryName">Category Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="categoryName" placeholder="Category Name" value="{{$categories->categoryName}}" required="">
+                        <input type="text" class="@error('categoryName') is-invalid @enderror" style="color:#0090e7" name="categoryName" placeholder="Category Name" value="{{$categories->categoryName}}" required="">
+                         @error('categoryName')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       
                       </div> 

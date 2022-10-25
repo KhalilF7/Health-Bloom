@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CategorycenterController;
 use App\Mail\contactMail;
+use App\Http\Controllers\CenterUserController;
+
 
 
 /*
@@ -63,3 +65,7 @@ Route::middleware([
 
 Route::resource('/categorycenter',CategorycenterController::class);
 Route::resource('/center',CenterController::class);
+Route::resource('/centerUser',CenterUserController::class);
+Route::get('generatepdf', [CenterController::class, 'generatepdf'])->name('center.pdf');
+
+

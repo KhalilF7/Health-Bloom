@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Service;
+use App\Models\Center;
 
 class User extends Authenticatable
 {
@@ -66,4 +67,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function centers()
+    {
+        return $this->hasMany(Center::class);
+    }
 }

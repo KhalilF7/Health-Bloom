@@ -11,5 +11,10 @@ class Categorycenter extends Model
     protected $table = 'categories_center';
     protected $primaryKey = 'id';
     protected $fillable = ['categoryName'];
+
+    public function centers()
+    {
+        return $this->hasMany(Center::class);
+    }
     
 }
