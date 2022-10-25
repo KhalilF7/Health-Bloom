@@ -90,3 +90,4 @@ Route::resource('/centerUser',CenterUserController::class);
 Route::get('generatepdf', [CenterController::class, 'generatepdf'])->name('center.pdf');
 
 
+Route::get('/search', [CenterController::class, 'search']);

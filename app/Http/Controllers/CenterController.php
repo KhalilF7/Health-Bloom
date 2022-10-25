@@ -144,4 +144,32 @@ class CenterController extends Controller
         Center::destroy($id);
         return redirect('center')->with('flash_message', 'Center deleted!'); 
     }
+
+    public function search(Request $request)
+    {
+        $output="";
+        $center=Center::where('name','Like','%'.$request->search.'%')->orWhere('address','Like','%'.$request->search.'%')->orWhere('email','Like','%'.$request->search.'%')->orWhere('phone','Like','%'.$request->search.'%')->get();
+        
+        foreach($center as $center)
+        {
+            
+            $output.=
+            '<tr>
+            <td> '.$center->name.'</td>
+                <td>'.$center->description.' </td>
+                <td>'.$center->address.' </td>
+                <td>'.$center->email.'</td>
+                <td>'.$center->phone.' </td>
+                   
+                  
+                
+            </tr>'; 
+            
+           
+           
+        }
+
+        return response($output);
+
+    }
 }
