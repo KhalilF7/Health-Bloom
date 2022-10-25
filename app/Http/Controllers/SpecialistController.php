@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Specialist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SpecialistController extends Controller
 {
@@ -43,6 +44,17 @@ class SpecialistController extends Controller
      */
     public function upload(Request $request)
     {
+        Validator::make($request->all(), [
+            'name'=>'required',
+            'file'=>'required',
+            'phone'=>'required',
+            'speciality'=>'required',
+        ],[
+            'name.required'=>"This field is required",
+            'file.required'=>"This field is required",
+            'phone.required'=>"This field is required",
+            'speciality.required'=>"This field is required",
+        ])->validate();
         if(Auth::user()->usertype==1)
         {
             $specialist = new Specialist;
