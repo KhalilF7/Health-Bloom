@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Specialist;
+use Illuminate\Support\Facades\Auth;
 
 class SpecialistController extends Controller
 {
@@ -14,7 +15,14 @@ class SpecialistController extends Controller
      */
     public function addview()
     {
-        return view('admin.add_specialist');
+        if(Auth::user()->usertype==1)
+        {
+            return view('admin.add_specialist');
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -35,20 +43,27 @@ class SpecialistController extends Controller
      */
     public function upload(Request $request)
     {
-        $specialist = new Specialist;
+        if(Auth::user()->usertype==1)
+        {
+            $specialist = new Specialist;
 
-        $image = $request->file;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $request->file->move('specialistimage', $imagename);
-        $specialist->image = $imagename;
+            $image = $request->file;
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->file->move('specialistimage', $imagename);
+            $specialist->image = $imagename;
 
-        $specialist->name = $request->specialistname;
-        $specialist->phone = $request->phonenumber;
-        $specialist->speciality = $request->speciality;
+            $specialist->name = $request->specialistname;
+            $specialist->phone = $request->phonenumber;
+            $specialist->speciality = $request->speciality;
 
-        $specialist->save();
+            $specialist->save();
 
-        return redirect('/show_specialist_view')->with('message', 'Specialist Added Seccessfully !');
+            return redirect('/show_specialist_view')->with('message', 'Specialist Added Seccessfully !');
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -58,8 +73,15 @@ class SpecialistController extends Controller
      */
     public function showview()
     {
-        $specialists = Specialist::all();
-        return view('admin.show_specialist', compact('specialists'));
+        if(Auth::user()->usertype==1)
+        {
+            $specialists = Specialist::all();
+            return view('admin.show_specialist', compact('specialists'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -70,8 +92,15 @@ class SpecialistController extends Controller
      */
     public function editspecialist($id)
     {
-        $specialist = Specialist::find($id);
-        return view('admin.edit_specialist', compact('specialist'));
+        if(Auth::user()->usertype==1)
+        {
+            $specialist = Specialist::find($id);
+            return view('admin.edit_specialist', compact('specialist'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -83,22 +112,30 @@ class SpecialistController extends Controller
      */
     public function updatespecialist(Request $request, $id)
     {
-        $specialist = Specialist::find($id);
-        $specialist->name = $request->specialistname;
-        $specialist->phone = $request->phonenumber;
-        $specialist->speciality = $request->speciality;
-
-        $image = $request->file;
-        if($image)
+        if(Auth::user()->usertype==1)
         {
-            $imagename = time().'.'.$image->getClientOriginalExtension();
-            $request->file->move('specialistimage', $imagename);
-            $specialist->image = $imagename;
+            $specialist = Specialist::find($id);
+            $specialist->name = $request->specialistname;
+            $specialist->phone = $request->phonenumber;
+            $specialist->speciality = $request->speciality;
+
+            $image = $request->file;
+            if($image)
+            {
+                $imagename = time().'.'.$image->getClientOriginalExtension();
+                $request->file->move('specialistimage', $imagename);
+                $specialist->image = $imagename;
+            }
+
+            $specialist->save();
+
+            return redirect('/show_specialist_view')->with('message', 'Specialist Edited Seccessfully !');
         }
-
-        $specialist->save();
-
-        return redirect('/show_specialist_view')->with('message', 'Specialist Edited Seccessfully !');
+        else 
+        {
+            return redirect()->back();
+        }
+        
     }
 
     /**
@@ -109,8 +146,28 @@ class SpecialistController extends Controller
      */
     public function deletespecialist($id)
     {
-        $specialist = Specialist::find($id);
-        $specialist->delete();
-        return redirect()->back();
+        if(Auth::user()->usertype==1)
+        {
+            $specialist = Specialist::find($id);
+            $specialist->delete();
+            return redirect()->back();
+        }
+        else 
+        {
+            return redirect()->back();
+        }
+    }
+
+    public function specialists()
+    {
+        if(Auth::user()->usertype==1)
+        {
+            $specialists = Specialist::all();
+            return view('user.specialists', compact('specialists'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 }
