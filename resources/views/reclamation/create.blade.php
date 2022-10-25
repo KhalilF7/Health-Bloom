@@ -13,10 +13,16 @@
                             @csrf
                             <label class="label">Complaint Title: </label>
                             <input type="text" name="title" class="form-control" required/>
+                            @error('title')
+                                        {{ $message}}
+                                    @enderror
                         </div>
                         <div class="form-group">
                             <label class="label">Post Description: </label>
                             <textarea name="description" rows="10" cols="30" class="form-control" required></textarea>
+                            @error('description')
+                                        {{ $message}}
+                                    @enderror
                         </div>
 
                         <div>
@@ -26,6 +32,9 @@
                                     <option value="Faible">Grave</option>
                                     <option value="Moyen">Faible</option>
                                 </select>
+                                @error('status')
+                                        {{ $message}}
+                                    @enderror
                         </div><br>
                         <div>
                                 <label class="label">status: </label>
@@ -34,6 +43,9 @@
                                     <option value="Faible">traité</option>
                                     <option value="Moyen">non traité</option>
                                 </select>
+                                 @error('classification')
+                                        {{ $message}}
+                                    @enderror
                         </div>
                         <br/>
                         <div class="form-group">

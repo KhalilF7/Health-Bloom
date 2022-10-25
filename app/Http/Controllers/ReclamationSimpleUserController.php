@@ -41,7 +41,7 @@ class ReclamationSimpleUserController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'description'=>'required',
+            'description'=>'required|max:255',
             'status'=>'required',
             'classification'=>'required',
         ]);
