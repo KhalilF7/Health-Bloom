@@ -8,6 +8,9 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="text-center text-success">Show</h3>
+                    <a href="{{ url('/reclamation/'.$complaint->id.'/edit') }}">
+                        <h3 class="text-center text-success">Edit</h3>
+                    </a>
                     <br/>
                     <h2>{{ $complaint->title }}</h2>
                     <p>

@@ -16,15 +16,7 @@ class ReclamationController extends Controller
     public function index()
     {
         $complaints = Complaint::all();
-
-         if(Auth::user()->usertype==1)
-        {
-            return view('reclamation.index', compact('complaints'));
-        }
-        else
-        {
-            return redirect()->back();
-        }
+        return view('reclamation.index', compact('complaints'));
     }
 
     /**
@@ -34,14 +26,7 @@ class ReclamationController extends Controller
      */
     public function create()
     {
-          if(Auth::user()->usertype==1)
-        {
         return view('reclamation.create');
-        }
-        else
-        {
-            return redirect()->back();
-        }
     }
 
     /**
@@ -61,14 +46,9 @@ class ReclamationController extends Controller
           $input = $request->all();
         $input['user_id'] = auth()->user()->id;
         Complaint::create($input);
-        if(Auth::user()->usertype==1)
-        {
+
             return redirect()->route('reclamation.index');
-        }
-        else
-        {
-            return redirect()->back();
-        }
+
     }
 
     /**
@@ -79,13 +59,46 @@ class ReclamationController extends Controller
     public function show($id)
     {
         $complaint = Complaint::find($id);
-        if(Auth::user()->usertype==1)
-        {
-            return view('reclamation.show', compact('complaint'));
-        }
-        else
-        {
-            return redirect()->back();
-        }
+        return view('reclamation.show', compact('complaint'));
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+        $complaint = Complaint::find($id);
+        return view('reclamation.edit')->with('complaint', $complaint);;
+
+    }
+
+      /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'status'=>'required',
+            'classification'=>'required',
+        ]);
+
+        $complaint = Complaint::find($id);
+        $complaint->title = $request->title;
+        $complaint->description = $request->description;
+        $complaint->status = $request->status;
+        $complaint->classification = $request->classification;
+        $complaint->save();
+        return redirect()->route('reclamation.index')->with('flash_message', 'complaint Updated!');
     }
 }
