@@ -16,6 +16,7 @@
             <link rel="stylesheet" href="{{ URL::asset('admin/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
             <link rel="stylesheet" href="{{ URL::asset('admin/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
             <link rel="stylesheet" href="{{ URL::asset('admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
+<base href="/public" />
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
@@ -111,11 +112,11 @@
                       </div>
                       <div class="form-group">
                         <label>Old Image</label>
-                        <img width="150" height="auto" src="public/imagecenter/{{$centers->imagecenter}}" />
+                        <img width="150" height="auto" src="imagecenter/{{$centers->imagecenter}}" />
                       </div>
                       <div class="form-group">
                         <label>Center Image</label>
-                        <input type="file" name="imagecenter" value="imagecenter" required="" >
+                        <input type="file" name="file" value="imagecenter" required="" >
                       </div>
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>

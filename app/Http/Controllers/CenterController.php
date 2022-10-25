@@ -116,7 +116,6 @@ class CenterController extends Controller
     ]);
         
         $center = Center::find($id);
-
         $center->name = $request->name;
         $center->description = $request->description;
         $center->address = $request->address;
