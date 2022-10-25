@@ -44,6 +44,8 @@ Route::get('/center/serviceAdmin/{id}/create', [ServiceController::class,'create
 
 Route::get('/center/serviceAdmin/{id}', [ServiceController::class,'index']);
 
+Route::get('/center/service/{id}', [ServiceUserController::class,'index']);
+
 Route::get('/report',function(){
  Mail::to('nourelhouda.mohsni@esprit.tn')
  ->send(new contactMail());

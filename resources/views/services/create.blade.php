@@ -41,8 +41,7 @@
                         <input type="number" class="form-control" style="color:#0090e7" name="price" id="price" placeholder="Price" required="">
                       </div>
                       <input type="submit" value="Save" class="btn btn-success">
-                      <a href="{{ url('/center/serviceAdmin/'.$services->center_id) }}" class="btn btn-primary" title="Back">
-    <i class="fa fa-plus" aria-hidden="true" ></i> Back
+                      <a href="{{ url('/center/serviceAdmin/'.$centers->id) }}" class="btn btn-primary" title="Back"><i class="fa fa-plus" aria-hidden="true" ></i> Back</a>
                     </form>
                   </div>
                 </div>

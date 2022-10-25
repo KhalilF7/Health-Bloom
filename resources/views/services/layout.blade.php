@@ -77,13 +77,13 @@
               <a class="nav-link" href="doctors.html">Doctors</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="blog.html">News</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{{url('service')}}">Services</a>
             </li>
 
             @if(Route::has('login'))
@@ -113,7 +113,7 @@
     </nav>
   </header>
 
-  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
+  <div class="page-banner overlay-dark bg-image" style="background-image: url(../../assets/img/bg_image_1.jpg);">
     <div class="banner-section">
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">

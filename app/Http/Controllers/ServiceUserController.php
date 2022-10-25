@@ -8,9 +8,9 @@ use App\Models\Service;
 class ServiceUserController extends Controller
 {
     
-    public function index()
+    public function index($id)
     {
-        $services = Service::all();
+        $services = Service::where('center_id', $id)->get();
         return view ('services.index')->with('services', $services);
     }
 

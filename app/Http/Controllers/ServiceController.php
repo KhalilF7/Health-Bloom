@@ -12,8 +12,6 @@ class ServiceController extends Controller
     public function index($id)
     {
         $services = Service::where('center_id', $id)->get();
-        // if(count($services)!=0)
-        // $services = Service::find("center_id"=>$id);
         return view ('services.indexAdmin')->with('services', $services);
     }
 
