@@ -70,6 +70,7 @@ class ServiceController extends Controller
         $service->save();
         return redirect()->back();
     }
+
     public function active($id)
     {
         $service = Service::find($id);

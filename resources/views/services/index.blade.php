@@ -30,7 +30,7 @@
                 <td>
                 @if($item->status=="Active")
                                             <!-- <a href="{{ url('/service/' . $item->id) }}" title="View Service"><button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
-                                            <a href="{{ url('/service/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Negociate</button></a>
+                                            <button type="submit" class="btn btn-primary" title="Report Service" onclick="return confirm(&quot;The report mail : Hi Health-Bloom your service is far from our request please try to check the likes and dislikes to improve your center ! Confirm report?&quot;)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="{{ url('/report') }}" title="Report Service">Report</a></button>
                                             <button type="submit" class="btn btn-success" title="Like Service" onclick="return confirm(&quot;Confirm like?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                             <a href="{{url('/service/like', $item->id)}}">Like</a>
                                             </button>

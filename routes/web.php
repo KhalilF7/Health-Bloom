@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceUserController;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CategorycenterController;
+use App\Mail\contactMail;
 
 
 /*
@@ -41,6 +42,11 @@ Route::get('/center/serviceAdmin/{id}/create', [ServiceController::class,'create
 
 Route::get('/center/serviceAdmin/{id}', [ServiceController::class,'index']);
 
+Route::get('/report',function(){
+ Mail::to('nourelhouda.mohsni@esprit.tn')
+ ->send(new contactMail());
+ return redirect('/service');
+});
 
 
 Route::middleware([
