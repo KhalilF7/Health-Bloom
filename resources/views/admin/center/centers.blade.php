@@ -1,16 +1,21 @@
     @extends('admin.center.layoutAdmin')
     @section('content')
-        
+       
         <div class=" grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <ul class="navbar-nav ">
-              <li class="nav-item ">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                </form>
-              </li>
+               
             </ul>
+            
+              <div class="search"  width:100%;
+          text-align:15px;
+          padding-top:15px;
+          padding-bottom:15px;>
+                  <input type="search" name="search" id="search" placeholder="Search Something here" class="form-control">
+              </div>
+
+            </div>
                     <h4 class="card-title">Centers List</h4>
                     <a href="{{ url('/center/create') }}" type="button" class="btn btn-primary btn-fw">Ajouter un nouveau centre</a>
 
@@ -25,10 +30,9 @@
                             <th>Address</th>
                             <th>Email</th>
                             <th>Mobile</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="Content">
                              @foreach($centers as $item)
                           <tr>
                             <td>{{ $item->name }}</td>
@@ -42,7 +46,7 @@
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Student" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
+                                      </form>
                             </td>                      
                             </tr>
                            @endforeach
@@ -52,4 +56,20 @@
                   </div>
                 </div>
               </div>
+
+  <script type="text/javascript"> 
+    $('#search').on('keyup',function() {
+    $value=$(this).val();
+    $.ajax({
+        type:'get',
+        url:'{{URL::to('search')}}',
+        data:{'search':$value},
+
+        success:function(data){
+          console.log(data);
+          $('#Content').html(data);
+        }
+    });
+    })
+  </script>
   @endsection
