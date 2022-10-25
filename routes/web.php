@@ -31,6 +31,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/specialists', [SpecialistController::class, 'specialists']);
 
 Route::get('/add_specialist_view', [SpecialistController::class, 'addview']);
 
