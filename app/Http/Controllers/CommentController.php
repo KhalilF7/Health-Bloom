@@ -29,4 +29,13 @@ class CommentController extends Controller
         //auth()->user()->email->notify(new FeedbackCommented($input));
         return redirect()->back()->with('success', 'Reply Submitted Successfuly');
     }
+
+
+    public function destroy($id)
+    {
+        $comment = Comment::destroy($id);
+        return redirect()->back()->with('flash_message', 'Comment deleted!');  
+    }
+
+
 }

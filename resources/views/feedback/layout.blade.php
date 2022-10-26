@@ -73,12 +73,14 @@
             <li class="nav-item">
               <a class="nav-link" href="doctors.html">Doctors</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/feedback"
-                  >Feedback <span id="js-count">{{
-                  auth()->user()->unreadNotifications->count()
-                  }}</span></a>
-          </li>
+            @if(auth()->user())
+          <li class="nav-item">
+            <a class="nav-link" href=""
+                ><i class="fa-solid fa-bell"></i> <span id="js-count">{{
+                auth()->user()->unreadNotifications->count()
+                }}</span></a>
+        </li>
+        @endif
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
@@ -124,13 +126,23 @@
     <script src="{{ asset('js/jquery.slim.min.js')}}"></script>
     <script src="{{ asset('bs/js/bootstrap.min.js')}}"></script>
     @stack('js')
-    @livewireScripts
+    
     <script> 
       window.User = {
           id: {{ optional(auth()->user())->id }}
       }
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/livewire/livewire.js?id=36e5f3515222d88e5c4a"></script>
+<script>
+window.livewire = new Livewire();
+
+document.addEventListener("DOMContentLoaded", function () {
+    window.livewire.start();
+}
+);
+</script>
+    @livewireScripts
 </body>
 <div class="container">
    @yield('content')

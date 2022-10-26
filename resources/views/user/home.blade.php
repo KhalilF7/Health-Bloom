@@ -82,10 +82,16 @@
             
             <li class="nav-item">
               <a class="nav-link" href="/feedback"
-                  >Feedback <span id="js-count">{{
-                  auth()->user()->unreadNotifications->count()
-                  }}</span></a>
+                  >Feedback</a>
           </li>
+          @if(auth()->user())
+          <li class="nav-item">
+            <a class="nav-link" href=""
+                ><i class="fa-solid fa-bell"></i> <span id="js-count">{{
+                auth()->user()->unreadNotifications->count()
+                }}</span></a>
+        </li>
+        @endif
             <li class="nav-item">
               <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
             </li>

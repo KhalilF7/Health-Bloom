@@ -1,6 +1,6 @@
 @extends('feedback.layout')
 @section('content')
-@livewireScripts
+@livewireStyles
     @if ( session ('store'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> Saved Successfully! </strong> Feedback has been successfully saved.
@@ -52,7 +52,6 @@
                    <th>Center Name</th>
                    <th>Feedback</th>
                    <th>Description</th>
-                   <th>Rating</th>
                    <th>Action</th>
                </tr>
            </thead>
@@ -75,16 +74,12 @@
                     @endforeach
                        <td>{{ $feedback->name }}</td>
                        <td>{{ $feedback->description }}</td>
-                       <td>{{ $feedback->rating }}</td>
                         <td>
                           @if($feedback->user_id == Auth::user()->id)
                             <a href="{{ route('feedback.show',['feedback'=>$feedback->id])}}" class="btn btn-sm">
                                 <i class="fas fa-eye"></i>
                             </a>
                         
-                            <a class="btn btn-sm"  href="{{ url('/rating') }}" >
-                                <i class="fas fa-edit"> Rating</i>
-                            </a>
                             <a href="{{ route('feedback.edit',['feedback'=>$feedback->id])}}" class="btn btn-sm">
                               <i class="fas fa-edit"></i>
                           </a>
@@ -106,7 +101,7 @@
                         </a>
                     
                        
-                        <a style="float: right"><livewire:feedback-likes :feedback="$feedback"/> </a>
+                          <a style="float: right; margin-right:70px"><livewire:feedback-likes :feedback="$feedback"/> </a>
                         </td>
                       @endif
                         

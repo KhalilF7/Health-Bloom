@@ -48,7 +48,7 @@ Route::resource('/create', FeedbackController::class);
 Route::resource("comments", CommentController::class);
 // Route::post('/review-store',[FeedbackController::class, 'reviewstore'])->name('review.store');
 // Route::post('store', 'CommentController@store')->name("comments.store");
-Route::get('/rating',CenterRatings::class, 'rate');
+//Route::get('/rating',CenterRatings::class, 'rate');
 //Route::get('feedbackAdmin/download/{id}', FeedbackBackendController::class);
 
 Route::resource('/categorycenter',CategorycenterController::class);

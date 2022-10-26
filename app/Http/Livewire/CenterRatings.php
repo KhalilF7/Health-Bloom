@@ -8,7 +8,9 @@ use App\Models\Feedback;
 class CenterRatings extends Component
 {
     public $rating;
-    public $comment;
+    public $name;
+    public $center_id;
+    public $description;
     public $currentId;
     public $feedback;
     public $hideForm;
@@ -53,13 +55,15 @@ class CenterRatings extends Component
 
     public function rate()
     {
-        $rating = Feedback::where('user_id', auth()->user()->id)->where('id', $this->feedback->id)->first();
+        $rating = Feedback::where('user_id', $this->feedback->user_id)->where('id', $this->feedback->id)->first();
         // $this->validate();
         if (!empty($rating)) {
             $rating->user_id = auth()->user()->id;
             $rating->id = $this->feedback->id;
             $rating->rating = $this->rating;
-            // $rating->comment = $this->comment;
+            $rating->name = $this->feedback->name;
+            $rating->description = $this->feedback->description;
+            $rating->center_id = $this->feedback->center_id;
             $rating->status = 1;
             try {
                 $rating->update();
@@ -72,7 +76,9 @@ class CenterRatings extends Component
             $rating->user_id = auth()->user()->id;
             $rating->id = $this->feedback->id;
             $rating->rating = $this->rating;
-            // $rating->comment = $this->comment;
+            $rating->name = $this->feedback->name;
+            $rating->description = $this->feedback->description;
+            $rating->center_id = $this->feedback->center_id;
             $rating->status = 1;
             try {
                 $rating->save();

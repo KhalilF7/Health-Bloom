@@ -15,7 +15,8 @@ class FeedbackLikes extends Component
     public function like()
     {
         if (auth()->check()) {
-            $response = auth()->user()->likes()->toggle($this->feedback->id);
+            $response = 
+        auth()->user()->likes()->toggle($this->feedback->id);
             if($response['attached']){
                 $this->feedback->user->notify(new FeedbackLiked($this->feedback));
             }

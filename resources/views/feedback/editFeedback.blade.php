@@ -2,7 +2,7 @@
 @section('content')
 @livewireStyles
   <div class="row">
-     <div class="col-md-6 col-1g-4">
+     <div class="col-md-6 col-1g-4 " style="margin-left: 340px">
          <form action="{{ route('feedback.update',['feedback'=>$feedback->id]) }}" method="post" class="card">
              <div class="card-header">
                  <i class="fas fa-circle-edit"></i> Update Feedback
@@ -61,9 +61,9 @@
                 </div>
                 
         </form>
-        @livewire('center-ratings', ['feedback' => $feedback], key($feedback->id))
+        
     </div>
   </div>
-
-  @endsection  
   @livewireScripts
+  @endsection  
+ 
