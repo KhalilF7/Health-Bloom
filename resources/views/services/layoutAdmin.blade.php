@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <base href="/public/admin" />
+  <base href="/public" />
   
     <!-- Required meta tags -->
     <meta charset="utf-8">
