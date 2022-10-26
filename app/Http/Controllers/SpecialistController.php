@@ -45,14 +45,14 @@ class SpecialistController extends Controller
     public function upload(Request $request)
     {
         Validator::make($request->all(), [
-            'name'=>'required',
+            'specialistname'=>'required',
             'file'=>'required',
-            'phone'=>'required',
+            'phonenumber'=>'required',
             'speciality'=>'required',
         ],[
-            'name.required'=>"This field is required",
+            'specialistname.required'=>"This field is required",
             'file.required'=>"This field is required",
-            'phone.required'=>"This field is required",
+            'phonenumber.required'=>"This field is required",
             'speciality.required'=>"This field is required",
         ])->validate();
         if(Auth::user()->usertype==1)
@@ -172,14 +172,7 @@ class SpecialistController extends Controller
 
     public function specialists()
     {
-        if(Auth::user()->usertype==1)
-        {
-            $specialists = Specialist::all();
-            return view('user.specialists', compact('specialists'));
-        }
-        else 
-        {
-            return redirect()->back();
-        }
+        $specialists = Specialist::all();
+        return view('user.specialists', compact('specialists'));
     }
 }
