@@ -61,17 +61,28 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{url('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="{{url('specialists')}}">Specialists</a>
+            </li>
+            
+
+            @if(Route::has('login'))
+
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('myappointment')}}">My Appointment</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="doctors.html">Doctors</a>
+              <a class="nav-link" href="/feedback">My Feedback</a>
             </li>
             @if(auth()->user())
           <li class="nav-item">
@@ -81,16 +92,8 @@
                 }}</span></a>
         </li>
         @endif
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-
-            @if(Route::has('login'))
-
-            @auth
 
             <x-app-layout>
-
             </x-app-layout>
 
             @else
@@ -107,7 +110,8 @@
             @endif
 
           </ul>
-        </div> <!-- .navbar-collapse -->
+        </div>
+         <!-- .navbar-collapse -->
       </div> <!-- .container -->
     </nav>
   </header>

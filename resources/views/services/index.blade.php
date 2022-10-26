@@ -1,5 +1,5 @@
 
-    @extends('services.layout')
+    @extends('feedback.layout')
     @section('content')
     <div class="page-section">
         <div class="container">

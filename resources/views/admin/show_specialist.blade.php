@@ -81,5 +81,28 @@
     <!-- plugins:js -->
     @include('admin.script')
     <!-- End custom js for this page -->
+    @stack('modal')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/jquery.slim.min.js')}}"></script>
+    <script src="{{ asset('bs/js/bootstrap.min.js')}}"></script>
+    @stack('js')
+    
+    <script> 
+      window.User = {
+          id: {{ optional(auth()->user())->id }}
+      }
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/livewire/livewire.js?id=36e5f3515222d88e5c4a"></script>
+<script>
+window.livewire = new Livewire();
+
+document.addEventListener("DOMContentLoaded", function () {
+    window.livewire.start();
+}
+);
+</script>
+    @livewireScripts
   </body>
 </html>
