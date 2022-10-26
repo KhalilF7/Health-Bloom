@@ -9,12 +9,12 @@
         <input type="hidden" name="id" id="id" value="{{$services->id}}" id="id" />
         <input type="hidden" name="center_id" id="center_id" value="{{$services->center_id}}" id="id" />
         <label>Name</label></br>
-        <input type="text" name="name" id="name" value="{{$services->name}}" class="@error('name') is-invalid @enderror form-control"></br>
+        <input type="text" name="name" id="name" value="{{$services->name}}" style="color:#0090e7" class="@error('name') is-invalid @enderror form-control"></br>
         @error('name')
                        <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
         <label>Description</label></br>
-        <input type="text" name="description" id="description" value="{{$services->description}}" class="@error('description') is-invalid @enderror form-control"></br>
+        <input type="text" name="description" id="description" value="{{$services->description}}" style="color:#0090e7" class="@error('description') is-invalid @enderror form-control"></br>
         @error('description')
                        <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -28,7 +28,7 @@
                       </select>
         
         <label>Price</label></br>
-        <input type="number" name="price" id="price" value="{{$services->price}}" class="@error('price') is-invalid @enderror form-control"></br>
+        <input type="number" name="price" id="price" value="{{$services->price}}" style="color:#0090e7" class="@error('price') is-invalid @enderror form-control"></br>
         @error('price')
                        <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

@@ -34,9 +34,9 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="" class= "form-labe1"> status </label>
+                  <!-- <label for="" class= "form-labe1"> status </label> -->
                   <select name= "status" value="{{ old('status', $feedback->status) }}"
-                        class= "form-control @error('status') is-invalid @enderror" class="form-control">>
+                        class= "form-control @error('status') is-invalid @enderror" class="form-control" hidden>
                     <option value="0">Activé</option>
                     <option value="1">Archivé</option>
                   </select>

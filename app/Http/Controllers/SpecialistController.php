@@ -49,6 +49,11 @@ class SpecialistController extends Controller
             'file'=>'required',
             'phonenumber'=>'required',
             'speciality'=>'required',
+        ],[
+            'specialistname.required'=>"This field is required",
+            'file.required'=>"This field is required",
+            'phonenumber.required'=>"This field is required",
+            'speciality.required'=>"This field is required",
         ])->validate();
         if(Auth::user()->usertype==1)
         {

@@ -160,14 +160,8 @@ class CenterController extends Controller
                 <td>'.$center->description.' </td>
                 <td>'.$center->address.' </td>
                 <td>'.$center->email.'</td>
-                <td>'.$center->phone.' </td>
-                   
-                  
-                
+                <td>'.$center->phone.' </td>   
             </tr>'; 
-            
-           
-           
         }
 
         return response($output);

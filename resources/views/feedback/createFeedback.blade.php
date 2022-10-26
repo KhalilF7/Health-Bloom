@@ -12,44 +12,42 @@
                      <label for="" class= "form-labe1"> Name</label>
                      <input type="text" name= "name" id="name"
                       class= "form-control @error('name') is-invalid @enderror">
-                     {{-- @error('name')
+                     @error('name')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>
-                     @enderror --}}
+                     @enderror
                 </div>
 
                 <div class="mb-3">
                      <label for="" class= "form-labe1"> Description</label>
                      <input type="text" name= "description" id="description"
                       class= "form-control @error('description') is-invalid @enderror">
-                     {{-- @error('description')
+                     @error('description')
                           <div class="invalid-feedback">
                               {{ $message }}
                           </div>
-                     @enderror --}}
+                     @enderror
                 </div>
 
         
-
-{{-- 
             <div class="mb-3">
               <label for="" class= "form-labe1"> Status </label>
-              {{-- <input type="text" name= "status" value="{{ old('status') }}"
-              class= "form-control @error('status') is-invalid @enderror"> --}}
-              {{-- @error('status') --}}
-                  {{-- <div class="invalid-feedback">
+              <input type="text" name= "status" value="{{ old('status') }}"
+              class= "form-control @error('status') is-invalid @enderror"> 
+              @error('status')
+                  <div class="invalid-feedback">
                       {{ $message }}
-                  </div> --}}
+                  </div>
                   
-                    {{-- <select name= "status" value="{{ old('status') }}"
+                    <select name= "status" value="{{ old('status') }}"
                         class= "form-control @error('status') is-invalid @enderror" class="form-control">>
                     <option value="">--Please choose an option--</option>
                     <option value="0">Activé</option>
                     <option value="1">Archivé</option>
-                    </select> --}}
-              {{-- @enderror --}}
-            {{-- </div> --}} 
+                    </select>
+               @enderror
+            </div>
             
             <div class="form-group">
                 <label for="center_id">Center</label>

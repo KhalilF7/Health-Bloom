@@ -43,15 +43,25 @@
 
                       <div class="form-group">
                         <label for="specialistname">Specialist Name</label>
-                        <input type="text" class="form-control" style="color:#0090e7" name="specialistname" placeholder="Specialist Name" required="">
+                        <input type="text" class="form-control" style="color:#0090e7" name="specialistname" placeholder="Specialist Name">
                       </div>
+                      
+                      @error('specialistname')
+                      <div class="alert alert-danger">*{{$message}}</div>
+                      @enderror
+
                       <div class="form-group">
                         <label for="phonenumber">Phone Number</label>
-                        <input type="number" class="form-control" style="color:#0090e7" name="phonenumber" placeholder="Phone Number" required="">
+                        <input type="number" class="form-control" style="color:#0090e7" name="phonenumber" placeholder="Phone Number">
                       </div>
+                      
+                      @error('phonenumber')
+                      <div class="alert alert-danger">*{{$message}}</div>
+                      @enderror
+
                       <div class="form-group">
                         <label for="speciality">Speciality</label>
-                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='speciality' required="">
+                        <select class="js-example-basic-single" style="width:100%; color:#0090e7" name='speciality'>
                         <option disabled>--Select Speciality-- </option>
                         <option value="Paramedic">Paramedic</option>
                         <option value="Nutritionist">Nutritionist</option>
@@ -60,9 +70,14 @@
                         <option value="Fitness Trainer">Fitness Trainer</option>
                       </select>
                       </div>
+                      
+                      @error('speciality')
+                      <div class="alert alert-danger">*{{$message}}</div>
+                      @enderror
+
                       <div class="form-group">
                         <label>Specialist Image</label>
-                        <input type="file" name="file" required="" ><!-- class="file-upload-default">
+                        <input type="file" name="file" ><!-- class="file-upload-default">
                         <div class="input-group col-xs-12">
                           <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                           
@@ -71,6 +86,11 @@
                           </span>
                         </div>-->
                       </div>
+                      
+                      @error('file')
+                      <div class="alert alert-danger">*{{$message}}</div>
+                      @enderror
+
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
                     </form>
