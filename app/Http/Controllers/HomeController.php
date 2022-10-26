@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Specialist;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
         {
             if(Auth::user()->usertype=='0')
             {
-                return view('user.home');
+                $specialists = Specialist::all();
+                return view('user.home', compact('specialists'));
             }
             else
             {
@@ -29,6 +31,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('user.home');
+        if(Auth::id())
+        {
+            return redirect('/home');
+        }
+        else
+        {
+            $specialists = Specialist::all();
+            return view('user.home', compact('specialists'));
+        }
     }
 }

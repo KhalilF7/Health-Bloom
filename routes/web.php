@@ -10,8 +10,8 @@ use App\Http\Controllers\CategorycenterController;
 use App\Mail\contactMail;
 use App\Http\Controllers\CenterUserController;
 use App\Http\Controllers\MaterialController;
-
-
+use App\Http\Controllers\SpecialistController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +24,20 @@ use App\Http\Controllers\MaterialController;
 |
 */
 
-
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
 
 Route::resource('/service', ServiceUserController::class);
 
@@ -35,9 +45,9 @@ Route::get('/center/serviceAdmin/archive/{id}', [ServiceController::class,'archi
 
 Route::get('/center/serviceAdmin/active/{id}', [ServiceController::class,'active']);
 
-Route::get('/center/service/like/{id}', [ServiceUserController::class,'like']);
+Route::get('/centerUser/service/like/{id}', [ServiceUserController::class,'like']);
 
-Route::get('/center/service/dislike/{id}', [ServiceUserController::class,'dislike']);
+Route::get('/centerUser/service/dislike/{id}', [ServiceUserController::class,'dislike']);
 
 Route::resource('/serviceAdmin', ServiceController::class);
 
@@ -68,21 +78,12 @@ Route::get('/center/serviceAdmin/material/{id}/edit', [MaterialController::class
 Route::get('/report',function(){
  Mail::to('nourelhouda.mohsni@esprit.tn')
  ->send(new contactMail());
- return redirect('/service');
+ return redirect('/centerUser');
 });
 
 Route::get('/sendSMS',[App\Http\Controllers\TwilioSMSController::class,'index']);
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
 
 Route::resource('/categorycenter',CategorycenterController::class);
 Route::resource('/center',CenterController::class);
@@ -91,3 +92,34 @@ Route::get('generatepdf', [CenterController::class, 'generatepdf'])->name('cente
 
 
 Route::get('/search', [CenterController::class, 'search']);
+
+Route::get('/specialists', [SpecialistController::class, 'specialists']);
+
+Route::get('/add_specialist_view', [SpecialistController::class, 'addview']);
+
+Route::get('/show_specialist_view', [SpecialistController::class, 'showview']);
+
+Route::post('/upload_specialist', [SpecialistController::class, 'upload']);
+
+Route::get('/deletespecialist/{id}', [SpecialistController::class, 'deletespecialist']);
+
+Route::get('/editspecialist/{id}', [SpecialistController::class, 'editspecialist']);
+
+Route::post('/updatespecialist/{id}', [SpecialistController::class, 'updatespecialist']);
+
+Route::post('/appointment', [AppointmentController::class, 'appointment']);
+
+Route::get('/myappointment', [AppointmentController::class, 'myappointment']);
+
+Route::get('/cancel_appointment/{id}', [AppointmentController::class, 'cancel_appointment']);
+
+Route::get('/showappointment', [AppointmentController::class, 'showappointment']);
+
+Route::get('/approved/{id}', [AppointmentController::class, 'approved']);
+
+Route::get('/canceled/{id}', [AppointmentController::class, 'canceled']);
+
+Route::get('/emailview/{id}', [AppointmentController::class, 'emailview']);
+
+Route::post('/sendemail/{id}', [AppointmentController::class, 'sendemail']);
+

@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Service;
 use App\Models\Center;
 use App\Models\Material;
+use App\Models\Appointment;
 
 class User extends Authenticatable
 {
@@ -26,6 +27,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Service::class);
     }
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
