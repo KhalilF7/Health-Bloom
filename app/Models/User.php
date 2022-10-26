@@ -75,6 +75,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function feedbacks()
+
+        {
+
+        return $this->hasMany(Feedback::class);
+
+        }
+
     public function centers()
     {
         return $this->hasMany(Center::class);
@@ -83,5 +91,10 @@ class User extends Authenticatable
     public function materials()
     {
         return $this->hasMany(Material::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Feedback::class);
     }
 }

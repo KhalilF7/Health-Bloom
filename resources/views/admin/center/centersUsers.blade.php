@@ -1,3 +1,4 @@
+
 @extends('admin.center.layout')
 @section('content')  
   <div class="page-section bg-light">

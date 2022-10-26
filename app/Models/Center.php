@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Center;
 use App\Models\User;
 
-
 class Center extends Model
 {
     use HasFactory;
+
+
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Models\Feedback');
+    }
     protected $table = 'centers';
     protected $primaryKey = 'id';
 protected $fillable = ['name','description','address','email','phone','imagecenter'];
@@ -30,6 +35,6 @@ protected $fillable = ['name','description','address','email','phone','imagecent
     {
         return $this->belongsTo(Categorycenter::class);
     }
+    
 
-  
 }

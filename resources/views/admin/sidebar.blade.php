@@ -49,7 +49,6 @@
               </ul>
             </div>
 </li>
-
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -74,5 +73,23 @@
               <span class="menu-title">Appointments Management</span>
             </a>
           </li>
+<li class="nav-item menu-items">
+  <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+    <span class="menu-icon">
+      <i class="mdi mdi-laptop"></i>
+    </span>
+    <span class="menu-title" style="font-size: 14px">Feedback Management</span>
+    <i class="menu-arrow"></i>
+  </a>
+  <div class="collapse" id="ui-basic">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item"> <a class="nav-link" href="{{url('feedbackAdmin')}}">Feedback</a></li>
+  </ul>
+  </div>
+    
+</li>
+
         </ul>
+
+        
       </nav>
