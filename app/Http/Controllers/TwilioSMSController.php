@@ -30,7 +30,7 @@ class TwilioSMSController extends Controller
                 'body' => $message]);
   
             // dd('SMS Sent Successfully.');
-            return redirect('/service');
+            return redirect('/centerUser');
   
         } catch (Exception $e) {
             dd("Error: ". $e->getMessage());

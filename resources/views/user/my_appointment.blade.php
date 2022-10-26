@@ -66,47 +66,45 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupport">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('home')}}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('specialists')}}">Specialists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url('home')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('specialists')}}">Specialists</a>
+            </li>
 
-        @if(Route::has('login'))
+            
 
-        @auth
-        
-        <li class="nav-item">
-          <a class="nav-link active" href="{{url('myappointment')}}">My Appointment</a>
-        </li>
+            @if(Route::has('login'))
 
-        <x-app-layout>
-        </x-app-layout>
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('myappointment')}}">My Appointment</a>
+            </li>
 
-        @else
+            <x-app-layout>
+            </x-app-layout>
 
-        <li class="nav-item">
-            <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
-        </li>
+            @else
 
-        @endauth
+            <li class="nav-item">
+                <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
+            </li>
 
-        @endif
+            @endauth
 
-      </ul>
-    </div> <!-- .navbar-collapse -->
-  </div> <!-- .container -->
+            @endif
+
+          </ul>
+        </div> <!-- .container -->
 </nav>
 </header>
       
