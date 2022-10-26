@@ -10,15 +10,15 @@
 
   <title>Health Bloom - Medical Center</title>
 
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/maicons.css') }}">
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.css') }}">
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendor/owl-carousel/css/owl.carousel.css') }}">
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendor/animate/animate.css') }}">
 
-  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/theme.css') }}">
 </head>
 <body>
 
@@ -71,18 +71,17 @@
               <a class="nav-link" href="{{url('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{{url('specialists')}}">Specialists</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+
+            
 
             @if(Route::has('login'))
 
             @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('centerUser')}}">Centers</a>
+            </li>
             
             <li class="nav-item">
               <a class="nav-link" href="{{url('myappointment')}}">My Appointment</a>
@@ -105,7 +104,7 @@
             @endif
 
           </ul>
-        </div> <!-- .navbar-collapse -->
+        </div><!-- .navbar-collapse -->
       </div> <!-- .container -->
     </nav>
   </header>
@@ -126,6 +125,9 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    @yield('content')
+</div>
 
 
   <div class="bg-light">
