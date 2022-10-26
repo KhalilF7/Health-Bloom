@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
   <title>Health Bloom - Medical Center</title>
 
-  <link rel="stylesheet" href="{{ URL::asset('../assets/css/maicons.css') }}">
+  <link rel="stylesheet" href="../assets/css/maicons.css">
 
-  <link rel="stylesheet" href="{{ URL::asset('../assets/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"/>
 
-  <link rel="stylesheet" href="{{ URL::asset('../assets/vendor/owl-carousel/css/owl.carousel.css') }}">
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
-  <link rel="stylesheet" href="{{ URL::asset('../assets/vendor/animate/animate.css') }}">
+  <link rel="stylesheet" href="../assets/css/theme.css">
 
-  <link rel="stylesheet" href="{{ URL::asset('../assets/css/theme.css') }}">
+  @livewireStyles
 </head>
+<header>
 <body>
 
   <!-- Back to top button -->
@@ -85,6 +88,9 @@
             
             <li class="nav-item">
               <a class="nav-link" href="{{url('myappointment')}}">My Appointment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/feedback">My Feedback</a>
             </li>
 
             <x-app-layout>
@@ -202,6 +208,28 @@
 <script src="{{ URL::asset('../assets/vendor/wow/wow.min.js') }}"></script>
 
 <script src="{{ URL::asset('../assets/js/theme.js') }}"></script>
+@stack('modal')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
+    <script src="{{ asset('js/jquery.slim.min.js')}}"></script>
+    <script src="{{ asset('bs/js/bootstrap.min.js')}}"></script>
+    @stack('js')
+    
+    <script> 
+      window.User = {
+          id: {{ optional(auth()->user())->id }}
+      }
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/livewire/livewire.js?id=36e5f3515222d88e5c4a"></script>
+<script>
+window.livewire = new Livewire();
+
+document.addEventListener("DOMContentLoaded", function () {
+    window.livewire.start();
+}
+);
+</script>
+    @livewireScripts
 </body>
 </html>
