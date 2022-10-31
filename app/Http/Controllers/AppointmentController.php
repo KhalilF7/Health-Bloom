@@ -100,7 +100,7 @@ class AppointmentController extends Controller
             $client = new \Vonage\Client($basic);
 
             $response = $client->sms()->send(
-                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', 'Your appointment with $a is APPROVED!')
+                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', 'Your appointment with '.$a.' is APPROVED!')
             );
 
             $message = $response->current();
@@ -127,7 +127,7 @@ class AppointmentController extends Controller
             $client = new \Vonage\Client($basic);
 
             $response = $client->sms()->send(
-                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', "Your appointment with $a is CANCELED!")
+                new \Vonage\SMS\Message\SMS($data->phone, 'Health Bloom', "Your appointment with '.$a.' is CANCELED!")
             );
 
             $message = $response->current();
